@@ -1,0 +1,178 @@
+﻿@{
+    ViewBag.Title = "iCheck";
+}
+
+@section styles {
+    <link href="@Url.Content("~/Content/iCheck/all.css")" rel="stylesheet" />
+}
+
+@section scripts {
+    <script src="@Url.Content("~/Scripts/jquery.icheck.min.js")"></script>
+    <script>
+        $(document).ready(function () {
+            $('.iCheck input').iCheck({
+                checkboxClass: 'icheckbox_flat-red',
+                radioClass: 'iradio_minimal-red',
+                increaseArea: '20%' // optional
+            });
+
+            // for demo
+            $('.minimal input').iCheck({
+                checkboxClass: 'icheckbox_minimal-red',
+                radioClass: 'iradio_minimal-red'
+            });
+            $('.square input').iCheck({
+                checkboxClass: 'icheckbox_square-red',
+                radioClass: 'iradio_square-red'
+            });
+            $('.flat input').iCheck({
+                checkboxClass: 'icheckbox_flat-red',
+                radioClass: 'iradio_flat-red'
+            });
+        });
+    </script>
+
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">iCheck 客製化checkbox, radio</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container-fluid -->
+
+官方文件: <a href="http://fronteed.com/iCheck/">http://fronteed.com/iCheck/</a>
+<br />
+<code>checkboxClass: icheckbox_[style]-[color]</code>
+<br />
+<code>checkboxClass: iradio_[style]-[color]</code>
+<br />
+<code>[style] minimal, square, flat</code>
+<br />
+<code>[color] black, red, green, blue, aero, grey, orange, yellow, pink, purple</code>
+
+
+
+<div class="colors clear">
+    <strong>Color schemes</strong>
+    <ul>
+        <li title="Black" class=""></li>
+        <li class="red" title="Red"></li>
+        <li class="green" title="Green"></li>
+        <li class="blue" title="Blue"></li>
+        <li class="aero" title="Aero"></li>
+        <li class="grey" title="Grey"></li>
+        <li class="orange" title="Orange"></li>
+        <li class="yellow active" title="Yellow"></li>
+        <li class="pink" title="Pink"></li>
+        <li class="purple" title="Purple"></li>
+    </ul>
+</div>
+<hr />
+<div class="minimal">
+    minimal
+    <input type="checkbox">
+    <input type="checkbox" checked>
+    <input type="radio" name="iCheck">
+    <input type="radio" name="iCheck" checked>
+</div>
+<hr />
+<div class="square">
+    square
+    <input type="checkbox">
+    <input type="checkbox" checked>
+    <input type="radio" name="iCheck">
+    <input type="radio" name="iCheck" checked>
+</div>
+<hr />
+<div class="flat">
+    flat
+    <input type="checkbox">
+    <input type="checkbox" checked>
+    <input type="radio" name="iCheck">
+    <input type="radio" name="iCheck" checked>
+</div>
+<hr />
+
+<div class="form-group iCheck">
+    <label>Checkboxes</label>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" value=""> Checkbox 1
+        </label>
+    </div>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" value=""> Checkbox 2
+        </label>
+    </div>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" value=""> Checkbox 3
+        </label>
+    </div>
+</div>
+<div class="form-group iCheck">
+    <label>Radio Buttons</label>
+    <div class="radio">
+        <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> Radio 1
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> Radio 2
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3"> Radio 3
+        </label>
+    </div>
+</div>
+<div class="form-group iCheck">
+    <label>Inline Checkboxes</label>
+    <label class="checkbox-inline">
+        <input type="checkbox"> 1
+    </label>
+    <label class="checkbox-inline">
+        <input type="checkbox"> 2
+    </label>
+    <label class="checkbox-inline">
+        <input type="checkbox"> 3
+    </label>
+</div>
+<div class="form-group iCheck">
+    <label>Inline Radio Buttons</label>
+    <label class="radio-inline">
+        <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked> 1
+    </label>
+    <label class="radio-inline">
+        <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="option2"> 2
+    </label>
+    <label class="radio-inline">
+        <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3"> 3
+    </label>
+</div>
+
+
+
+<style>
+.colors{clear:both;padding:24px 0 9px;}
+.colors strong{float:left;line-height:20px;margin-right:20px}
+.colors li{position:relative;float:left;width:20px;height:20px;margin:2px 1px 0 0;background:#000;list-style:none;cursor:pointer;filter:alpha(opacity=50);opacity:.5;-webkit-transition:opacity .2s;-moz-transition:opacity .2s;-ms-transition:opacity .2s;-o-transition:opacity .2s;transition:opacity .2s;}
+.colors li:hover{filter:alpha(opacity=100);opacity:1}
+.colors li.red{background:#d54e21}
+.colors li.green{background:#78a300}
+.colors li.blue{background:#0e76a8}
+.colors li.aero{background:#9cc2cb}
+.colors li.grey{background:#73716e}
+.colors li.orange{background:#f70}
+.colors li.yellow{background:#fc0}
+.colors li.pink{background:#ff66b5}
+.colors li.purple{background:#6a5a8c}
+</style>

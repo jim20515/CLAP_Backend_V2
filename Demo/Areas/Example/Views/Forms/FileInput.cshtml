@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Datepicker";
+}
+
+@section styles {
+    <link href="@Url.Content("~/Content/bootstrap-fileinput/css/fileinput.min.css")" rel="stylesheet" />
+}
+
+@section scripts {
+    <script src="@Url.Content("~/Scripts/fileinput.min.js")"></script>
+    <script>
+        $(document).ready(function () {
+            $("#input-24").fileinput({
+                maxFileSize: 100,
+                allowedFileExtensions: ["jpg"]
+            });
+        });
+    </script>
+
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">FileInput</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container-fluid -->
+官方文件: <a href="http://plugins.krajee.com/file-input/demo">http://plugins.krajee.com/file-input/demo</a>
+<hr />
+用法1: class="file" 標籤屬性<code>data-*</code>設定
+<br />
+用法2: jquery呼叫
+<br />
+<br />
+<div class="col-md-4">
+    <div class="form-group">
+        <label>File input</label>
+        <input type="file" class="file" data-show-preview="false" data-show-upload="false">
+    </div>
+    <div class="form-group">
+        <label>File input preview</label>
+        <input type="file" class="file" data-show-upload="false">
+    </div>
+    <div class="form-group">
+        <label>限制jpg,100k</label>
+        <input type="file" id="input-24">
+    </div>
+</div>

@@ -1,0 +1,52 @@
+﻿@model string
+
+@{
+    var htmlField = ViewData.TemplateInfo.HtmlFieldPrefix;
+}
+
+<script src="@Url.Content("~/Scripts/tinymce/tinymce.js")"></script>
+<script>
+    tinyMCE.init({
+        selector: '#@htmlField',
+        language: 'zh_TW',
+        plugins: [
+                "advlist autoresize autolink lists link image charmap print preview anchor",
+                "searchreplace visualblocks code fullscreen",
+                "colorpicker textcolor insertdatetime media table contextmenu paste"
+        ],
+        toolbar: "insertfile undo redo | styleselect | bold italic | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+        file_browser_callback: RoxyFileBrowser
+    });
+
+    function RoxyFileBrowser(field_name, url, type, win) {
+        var roxyFileman = '/fileman/dev.html';
+        if (roxyFileman.indexOf("?") < 0) {
+            roxyFileman += "?type=" + type;
+        }
+        else {
+            roxyFileman += "&type=" + type;
+        }
+        roxyFileman += '&input=' + field_name + '&value=' + win.document.getElementById(field_name).value;
+        if (tinyMCE.activeEditor.settings.language) {
+            roxyFileman += '&langCode=' + tinyMCE.activeEditor.settings.language;
+        }
+        tinyMCE.activeEditor.windowManager.open({
+            file: roxyFileman,
+            title: '檔案總管',
+            width: 960,
+            height: 650,
+            resizable: "yes",
+            plugins: "media",
+            inline: "yes",
+            close_previous: "no"
+        }, { window: win, input: field_name });
+        return false;
+    }
+</script>
+
+@*<textarea name="@htmlField" id="@htmlField" class="hidden"></textarea>*@
+@Html.TextArea(
+    string.Empty, /* Name suffix */
+    ViewData.TemplateInfo.FormattedModelValue /* Initial value */
+)
+
