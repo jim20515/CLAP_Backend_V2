@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NCCUModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DeviceInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AuthCode" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Experiment_Apply">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TotalItem" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="UpdatePolicy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsUpdate" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Experiment_Attribute">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Condition" Type="float" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Experiment_Item">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <Association Name="FK_Experiement_Attribute_Experiment_Item">
+          <End Role="Experiment_Item" Type="Self.Experiment_Item" Multiplicity="1" />
+          <End Role="Experiment_Attribute" Type="Self.Experiment_Attribute" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Experiment_Item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Experiment_Attribute">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NCCUModelStoreContainer">
+          <EntitySet Name="DeviceInfo" EntityType="Self.DeviceInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Experiment_Apply" EntityType="Self.Experiment_Apply" Schema="dbo" Table="Experiment.Apply" store:Type="Tables" />
+          <EntitySet Name="Experiment_Attribute" EntityType="Self.Experiment_Attribute" Schema="dbo" Table="Experiment.Attribute" store:Type="Tables" />
+          <EntitySet Name="Experiment_Item" EntityType="Self.Experiment_Item" Schema="dbo" Table="Experiment.Item" store:Type="Tables" />
+          <AssociationSet Name="FK_Experiement_Attribute_Experiment_Item" Association="Self.FK_Experiement_Attribute_Experiment_Item">
+            <End Role="Experiment_Item" EntitySet="Experiment_Item" />
+            <End Role="Experiment_Attribute" EntitySet="Experiment_Attribute" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NCCUModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DeviceInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AuthCode" Type="Guid" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityContainer Name="NCCUEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DeviceInfo" EntityType="Self.DeviceInfo" />
+          <EntitySet Name="Experiment_Apply" EntityType="NCCUModel.Experiment_Apply" />
+          <EntitySet Name="Experiment_Attribute" EntityType="NCCUModel.Experiment_Attribute" />
+          <EntitySet Name="Experiment_Item" EntityType="NCCUModel.Experiment_Item" />
+          <AssociationSet Name="FK_Experiement_Attribute_Experiment_Item" Association="NCCUModel.FK_Experiement_Attribute_Experiment_Item">
+            <End Role="Experiment_Item" EntitySet="Experiment_Item" />
+            <End Role="Experiment_Attribute" EntitySet="Experiment_Attribute" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Experiment_Apply">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TotalItem" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatePolicy" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsUpdate" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Experiment_Attribute">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Condition" Type="Double" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Experiment_Item" Relationship="NCCUModel.FK_Experiement_Attribute_Experiment_Item" FromRole="Experiment_Attribute" ToRole="Experiment_Item" />
+        </EntityType>
+        <EntityType Name="Experiment_Item">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Experiment_Attribute" Relationship="NCCUModel.FK_Experiement_Attribute_Experiment_Item" FromRole="Experiment_Item" ToRole="Experiment_Attribute" />
+        </EntityType>
+        <Association Name="FK_Experiement_Attribute_Experiment_Item">
+          <End Type="NCCUModel.Experiment_Item" Role="Experiment_Item" Multiplicity="1" />
+          <End Type="NCCUModel.Experiment_Attribute" Role="Experiment_Attribute" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Experiment_Item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Experiment_Attribute">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NCCUModelStoreContainer" CdmEntityContainer="NCCUEntities">
+          <EntitySetMapping Name="DeviceInfo">
+            <EntityTypeMapping TypeName="NCCUModel.DeviceInfo">
+              <MappingFragment StoreEntitySet="DeviceInfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="AuthCode" ColumnName="AuthCode" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Experiment_Apply">
+            <EntityTypeMapping TypeName="NCCUModel.Experiment_Apply">
+              <MappingFragment StoreEntitySet="Experiment_Apply">
+                <ScalarProperty Name="IsUpdate" ColumnName="IsUpdate" />
+                <ScalarProperty Name="UpdatePolicy" ColumnName="UpdatePolicy" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TotalItem" ColumnName="TotalItem" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Experiment_Attribute">
+            <EntityTypeMapping TypeName="NCCUModel.Experiment_Attribute">
+              <MappingFragment StoreEntitySet="Experiment_Attribute">
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Condition" ColumnName="Condition" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Experiment_Item">
+            <EntityTypeMapping TypeName="NCCUModel.Experiment_Item">
+              <MappingFragment StoreEntitySet="Experiment_Item">
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

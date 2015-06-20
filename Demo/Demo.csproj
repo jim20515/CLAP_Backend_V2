@@ -59,6 +59,10 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -67,6 +71,14 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.2\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -176,9 +188,38 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\DeviceInfoesController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\SettingController.cs" />
+    <Compile Include="Areas\Admin\Models\Device.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Device.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Device.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Device.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\NCCU.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NCCU.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\DeviceInfo.cs">
+      <DependentUpon>Device.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Experiment_Apply.cs">
+      <DependentUpon>Device.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Experiment_Attribute.cs">
+      <DependentUpon>Device.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Experiment_Item.cs">
+      <DependentUpon>Device.tt</DependentUpon>
+    </Compile>
     <Compile Include="Areas\Example\Controllers\EmployeesController.cs" />
     <Compile Include="Areas\Example\Controllers\FormsController.cs" />
     <Compile Include="Areas\Example\Controllers\ImagesController.cs" />
@@ -193,7 +234,6 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ImageService.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\SettingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -774,6 +814,23 @@
     <Content Include="Areas\Example\Views\Employees\Details.cshtml" />
     <Content Include="Areas\Example\Views\Employees\Edit.cshtml" />
     <Content Include="Areas\Example\Views\Employees\Index.cshtml" />
+    <EntityDeploy Include="Areas\Admin\Models\NCCU.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NCCU.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Areas\Admin\Models\Device.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NCCU.edmx</DependentUpon>
+      <LastGenOutput>Device.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Admin\Models\NCCU.edmx.diagram">
+      <DependentUpon>NCCU.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\Admin\Models\Device.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NCCU.edmx</DependentUpon>
+      <LastGenOutput>Device.cs</LastGenOutput>
+    </Content>
     <None Include="Properties\PublishProfiles\test.pubxml" />
     <Content Include="Scripts\DataTables\Chinese-traditional.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -1144,7 +1201,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Logs\" />
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Example\Models\Partials\" />
     <Folder Include="Areas\Example\Views\Shared\" />
     <Folder Include="fileman\tmp\" />
