@@ -191,35 +191,44 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\DeviceInfoesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ExperimentApplyController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\SettingController.cs" />
-    <Compile Include="Areas\Admin\Models\Device.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Device.Context.tt</DependentUpon>
+    <Compile Include="Areas\Admin\Models\DeviceInfo.cs">
+      <DependentUpon>NCCU.tt</DependentUpon>
     </Compile>
-    <Compile Include="Areas\Admin\Models\Device.cs">
+    <Compile Include="Areas\Admin\Models\Experiment_Apply.cs">
+      <DependentUpon>NCCU.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Experiment_Attribute.cs">
+      <DependentUpon>NCCU.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Experiment_Item.cs">
+      <DependentUpon>NCCU.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Item_Acc.cs">
+      <DependentUpon>NCCU.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Item_CalAct.cs">
+      <DependentUpon>NCCU.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Json\ExperimentApplyJson.cs" />
+    <Compile Include="Areas\Admin\Models\NCCU.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Device.tt</DependentUpon>
+      <DependentUpon>NCCU.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\NCCU.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NCCU.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\NCCU.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>NCCU.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Areas\Admin\Models\DeviceInfo.cs">
-      <DependentUpon>Device.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Areas\Admin\Models\Experiment_Apply.cs">
-      <DependentUpon>Device.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Areas\Admin\Models\Experiment_Attribute.cs">
-      <DependentUpon>Device.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Areas\Admin\Models\Experiment_Item.cs">
-      <DependentUpon>Device.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Areas\Admin\ViewModels\ExperimentApplyViewModel.cs" />
     <Compile Include="Areas\Example\Controllers\EmployeesController.cs" />
     <Compile Include="Areas\Example\Controllers\FormsController.cs" />
     <Compile Include="Areas\Example\Controllers\ImagesController.cs" />
@@ -238,6 +247,8 @@
     <Compile Include="Models\SettingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Utils\GlobalData.cs" />
+    <Compile Include="Utils\GlobalFunc.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Demo.mdf" />
@@ -818,19 +829,24 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>NCCU.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Areas\Admin\Models\Device.Context.tt">
+    <Content Include="Areas\Admin\Models\NCCU.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>NCCU.edmx</DependentUpon>
-      <LastGenOutput>Device.Context.cs</LastGenOutput>
+      <LastGenOutput>NCCU.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Areas\Admin\Models\NCCU.edmx.diagram">
       <DependentUpon>NCCU.edmx</DependentUpon>
     </Content>
-    <Content Include="Areas\Admin\Models\Device.tt">
+    <Content Include="Areas\Admin\Models\NCCU.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>NCCU.edmx</DependentUpon>
-      <LastGenOutput>Device.cs</LastGenOutput>
+      <LastGenOutput>NCCU.cs</LastGenOutput>
     </Content>
+    <Content Include="Areas\Admin\Views\ExperimentApply\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ExperimentApply\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ExperimentApply\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ExperimentApply\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ExperimentApply\Index.cshtml" />
     <None Include="Properties\PublishProfiles\test.pubxml" />
     <Content Include="Scripts\DataTables\Chinese-traditional.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

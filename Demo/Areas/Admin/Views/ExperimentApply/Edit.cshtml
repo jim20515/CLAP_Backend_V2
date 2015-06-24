@@ -1,0 +1,93 @@
+﻿@model Demo.Areas.Admin.Models.Experiment_Apply
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@section scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+    <script>
+	$("input[type=file]").fileinput({
+	    initialPreview: [
+            "<img src='@Model.LogoPath' class='file-preview-image' alt='The Moon' title='The Moon'>",
+	    ],
+	    //overwriteInitial: false,
+	    maxFileSize: 100,
+	    allowedFileExtensions: ["jpg"]
+	});
+    </script>
+}
+
+@using (Html.BeginForm("Edit", ViewContext.RouteData.Values["controller"].ToString(), FormMethod.Post, new { @class = "form-horizontal form-bordered form-row-stripped" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Experiment_Apply</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TotalItem, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.TotalItem, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TotalItem, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UpdatePolicy, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.UpdatePolicy, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UpdatePolicy, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsUpdate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                <div class="checkbox">
+                    @Html.CheckBoxFor(model => model.IsUpdate)
+                    @Html.ValidationMessageFor(model => model.IsUpdate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CreateTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+				<div class="input-group date">
+					@Html.EditorFor(model => model.CreateTime, new { htmlAttributes = new { @class = "form-control date" } })
+					<span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+				</div>
+                @Html.ValidationMessageFor(model => model.CreateTime, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

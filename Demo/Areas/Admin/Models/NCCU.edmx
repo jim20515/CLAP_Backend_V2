@@ -18,10 +18,12 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="TotalItem" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="500" />
           <Property Name="UpdatePolicy" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="IsUpdate" Type="bit" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="ModifyTime" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="Experiment_Attribute">
           <Key>
@@ -39,17 +41,35 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="CreateTime" Type="datetime" StoreGeneratedPattern="Computed" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
         </EntityType>
-        <Association Name="FK_Experiement_Attribute_Experiment_Item">
+        <EntityType Name="Item_Acc">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="attr" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="attrval" Type="nvarchar" MaxLength="20" />
+          <Property Name="datetime" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Item_CalAct">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="attr" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="attrval" Type="nvarchar" MaxLength="20" />
+          <Property Name="datetime" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <Association Name="FK_Experiment_Attribute_Experiment_Item">
           <End Role="Experiment_Item" Type="Self.Experiment_Item" Multiplicity="1" />
-          <End Role="Experiment_Attribute" Type="Self.Experiment_Attribute" Multiplicity="0..1" />
+          <End Role="Experiment_Attribute" Type="Self.Experiment_Attribute" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Experiment_Item">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Experiment_Attribute">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="ItemId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -58,7 +78,9 @@
           <EntitySet Name="Experiment_Apply" EntityType="Self.Experiment_Apply" Schema="dbo" Table="Experiment.Apply" store:Type="Tables" />
           <EntitySet Name="Experiment_Attribute" EntityType="Self.Experiment_Attribute" Schema="dbo" Table="Experiment.Attribute" store:Type="Tables" />
           <EntitySet Name="Experiment_Item" EntityType="Self.Experiment_Item" Schema="dbo" Table="Experiment.Item" store:Type="Tables" />
-          <AssociationSet Name="FK_Experiement_Attribute_Experiment_Item" Association="Self.FK_Experiement_Attribute_Experiment_Item">
+          <EntitySet Name="Item_Acc" EntityType="Self.Item_Acc" Schema="dbo" Table="Item.Acc" store:Type="Tables" />
+          <EntitySet Name="Item_CalAct" EntityType="Self.Item_CalAct" Schema="dbo" Table="Item.CalAct" store:Type="Tables" />
+          <AssociationSet Name="FK_Experiment_Attribute_Experiment_Item" Association="Self.FK_Experiment_Attribute_Experiment_Item">
             <End Role="Experiment_Item" EntitySet="Experiment_Item" />
             <End Role="Experiment_Attribute" EntitySet="Experiment_Attribute" />
           </AssociationSet>
@@ -75,25 +97,17 @@
           <Property Name="AuthCode" Type="Guid" Nullable="false" />
           <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
-        <EntityContainer Name="NCCUEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="DeviceInfo" EntityType="Self.DeviceInfo" />
-          <EntitySet Name="Experiment_Apply" EntityType="NCCUModel.Experiment_Apply" />
-          <EntitySet Name="Experiment_Attribute" EntityType="NCCUModel.Experiment_Attribute" />
-          <EntitySet Name="Experiment_Item" EntityType="NCCUModel.Experiment_Item" />
-          <AssociationSet Name="FK_Experiement_Attribute_Experiment_Item" Association="NCCUModel.FK_Experiement_Attribute_Experiment_Item">
-            <End Role="Experiment_Item" EntitySet="Experiment_Item" />
-            <End Role="Experiment_Attribute" EntitySet="Experiment_Attribute" />
-          </AssociationSet>
-        </EntityContainer>
         <EntityType Name="Experiment_Apply">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TotalItem" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TotalItem" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="UpdatePolicy" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="IsUpdate" Type="Boolean" Nullable="false" />
+          <Property Name="UpdatePolicy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ModifyTime" Type="DateTime" Nullable="false" Precision="3" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="Experiment_Attribute">
           <Key>
@@ -101,32 +115,62 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ItemId" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Condition" Type="Double" />
           <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="Experiment_Item" Relationship="NCCUModel.FK_Experiement_Attribute_Experiment_Item" FromRole="Experiment_Attribute" ToRole="Experiment_Item" />
+          <NavigationProperty Name="Experiment_Item" Relationship="Self.FK_Experiment_Attribute_Experiment_Item" FromRole="Experiment_Attribute" ToRole="Experiment_Item" />
         </EntityType>
         <EntityType Name="Experiment_Item">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="CreateTime" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="Experiment_Attribute" Relationship="NCCUModel.FK_Experiement_Attribute_Experiment_Item" FromRole="Experiment_Item" ToRole="Experiment_Attribute" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Experiment_Attribute" Relationship="Self.FK_Experiment_Attribute_Experiment_Item" FromRole="Experiment_Item" ToRole="Experiment_Attribute" />
         </EntityType>
-        <Association Name="FK_Experiement_Attribute_Experiment_Item">
-          <End Type="NCCUModel.Experiment_Item" Role="Experiment_Item" Multiplicity="1" />
-          <End Type="NCCUModel.Experiment_Attribute" Role="Experiment_Attribute" Multiplicity="0..1" />
+        <EntityType Name="Item_Acc">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="attr" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="attrval" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Item_CalAct">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="attr" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="attrval" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <Association Name="FK_Experiment_Attribute_Experiment_Item">
+          <End Role="Experiment_Item" Type="Self.Experiment_Item" Multiplicity="1" />
+          <End Role="Experiment_Attribute" Type="Self.Experiment_Attribute" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Experiment_Item">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Experiment_Attribute">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="ItemId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityContainer Name="NCCUEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DeviceInfo" EntityType="Self.DeviceInfo" />
+          <EntitySet Name="Experiment_Apply" EntityType="Self.Experiment_Apply" />
+          <EntitySet Name="Experiment_Attribute" EntityType="Self.Experiment_Attribute" />
+          <EntitySet Name="Experiment_Item" EntityType="Self.Experiment_Item" />
+          <EntitySet Name="Item_Acc" EntityType="Self.Item_Acc" />
+          <EntitySet Name="Item_CalAct" EntityType="Self.Item_CalAct" />
+          <AssociationSet Name="FK_Experiment_Attribute_Experiment_Item" Association="Self.FK_Experiment_Attribute_Experiment_Item">
+            <End Role="Experiment_Item" EntitySet="Experiment_Item" />
+            <End Role="Experiment_Attribute" EntitySet="Experiment_Attribute" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -145,31 +189,53 @@
           <EntitySetMapping Name="Experiment_Apply">
             <EntityTypeMapping TypeName="NCCUModel.Experiment_Apply">
               <MappingFragment StoreEntitySet="Experiment_Apply">
-                <ScalarProperty Name="IsUpdate" ColumnName="IsUpdate" />
-                <ScalarProperty Name="UpdatePolicy" ColumnName="UpdatePolicy" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="TotalItem" ColumnName="TotalItem" />
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="TotalItem" ColumnName="TotalItem" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="UpdatePolicy" ColumnName="UpdatePolicy" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Experiment_Attribute">
             <EntityTypeMapping TypeName="NCCUModel.Experiment_Attribute">
               <MappingFragment StoreEntitySet="Experiment_Attribute">
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="Condition" ColumnName="Condition" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Condition" ColumnName="Condition" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Experiment_Item">
             <EntityTypeMapping TypeName="NCCUModel.Experiment_Item">
               <MappingFragment StoreEntitySet="Experiment_Item">
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item_Acc">
+            <EntityTypeMapping TypeName="NCCUModel.Item_Acc">
+              <MappingFragment StoreEntitySet="Item_Acc">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="attr" ColumnName="attr" />
+                <ScalarProperty Name="attrval" ColumnName="attrval" />
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item_CalAct">
+            <EntityTypeMapping TypeName="NCCUModel.Item_CalAct">
+              <MappingFragment StoreEntitySet="Item_CalAct">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="attr" ColumnName="attr" />
+                <ScalarProperty Name="attrval" ColumnName="attrval" />
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -190,7 +256,7 @@
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

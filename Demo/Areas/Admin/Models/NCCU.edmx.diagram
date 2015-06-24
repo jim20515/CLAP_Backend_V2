@@ -4,12 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5825b5febb3844ceb1f1d4331aa15e7a" Name="Diagram1">
-        <EntityTypeShape EntityType="NCCUModel.DeviceInfo" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NCCUModel.Experiment_Apply" Width="1.5" PointX="0.75" PointY="3.75" />
-        <EntityTypeShape EntityType="NCCUModel.Experiment_Attribute" Width="1.5" PointX="6" PointY="0.875" />
-        <EntityTypeShape EntityType="NCCUModel.Experiment_Item" Width="1.5" PointX="3.75" PointY="1.125" />
-        <AssociationConnector Association="NCCUModel.FK_Experiement_Attribute_Experiment_Item" />
+      <Diagram DiagramId="ff738fdeabf14c26bbb71b4187f6df22" Name="Diagram1">
+        <EntityTypeShape EntityType="NCCUModel.DeviceInfo" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NCCUModel.Experiment_Apply" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NCCUModel.Experiment_Attribute" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NCCUModel.Experiment_Item" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NCCUModel.Item_Acc" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NCCUModel.Item_CalAct" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="NCCUModel.FK_Experiment_Attribute_Experiment_Item" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

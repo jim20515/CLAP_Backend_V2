@@ -1,0 +1,78 @@
+﻿@model Demo.Areas.Admin.ViewModels.ExperimentApplyAddViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@section scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+	<script>
+	$("input[type=file]").fileinput({
+        maxFileSize: 100,
+        allowedFileExtensions: ["jpg"]
+    });
+	</script>
+}
+
+@using (Html.BeginForm("Create", ViewContext.RouteData.Values["controller"].ToString(), FormMethod.Post, new { @class = "form-horizontal form-bordered form-row-stripped" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h2>新增實驗項目</h2>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ExperItemList, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @for (int i = 0; i < Model.ExperItemList.Count; i++)
+                {
+                    @Html.CheckBoxFor(m => m.ExperItemList[i].Checked)
+                    @Html.DisplayFor(m => m.ExperItemList[i].Text)
+                    @Html.HiddenFor(m => m.ExperItemList[i].ItemId)
+                }
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.UpdatePolicyList, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @for (int i = 0; i < Model.UpdatePolicyList.Count; i++)
+                {
+                    @Html.CheckBoxFor(m => m.UpdatePolicyList[i].Checked)
+                    @Html.DisplayFor(m => m.UpdatePolicyList[i].Name)
+                    @Html.HiddenFor(m => m.UpdatePolicyList[i].id)
+                }
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="建立" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    
+}
+
+<div>
+    <h4>@Html.ActionLink("返回列表", "Index")</h4>
+</div>
+

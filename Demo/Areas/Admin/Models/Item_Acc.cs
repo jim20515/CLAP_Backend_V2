@@ -12,17 +12,11 @@ namespace Demo.Areas.Admin.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Experiment_Item
+    public partial class Item_Acc
     {
-        public Experiment_Item()
-        {
-            this.Experiment_Attribute = new HashSet<Experiment_Attribute>();
-        }
-    
         public int id { get; set; }
-        public string Name { get; set; }
-        public System.DateTime CreateTime { get; set; }
-    
-        public virtual ICollection<Experiment_Attribute> Experiment_Attribute { get; set; }
+        public string attr { get; set; }
+        public string attrval { get; set; }
+        public System.DateTime datetime { get; set; }
     }
 }
