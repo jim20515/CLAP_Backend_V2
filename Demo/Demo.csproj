@@ -212,6 +212,7 @@
     <Compile Include="Areas\Admin\Models\Item_CalAct.cs">
       <DependentUpon>NCCU.tt</DependentUpon>
     </Compile>
+    <Compile Include="Areas\Admin\Models\Json\BaseJson.cs" />
     <Compile Include="Areas\Admin\Models\Json\ExperimentApplyJson.cs" />
     <Compile Include="Areas\Admin\Models\NCCU.Context.cs">
       <AutoGen>True</AutoGen>
@@ -228,6 +229,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>NCCU.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Areas\Admin\Services\ExperimentApplyServices.cs" />
     <Compile Include="Areas\Admin\ViewModels\ExperimentApplyViewModel.cs" />
     <Compile Include="Areas\Example\Controllers\EmployeesController.cs" />
     <Compile Include="Areas\Example\Controllers\FormsController.cs" />
@@ -814,6 +816,7 @@
     <Content Include="CodeTemplates\MvcView\List.cs.t4" />
     <Content Include="CodeTemplates\MvcView\ModelMetadataFunctions.cs.include.t4" />
     <Content Include="js\jquery.validate.bootstrap.js" />
+    <Content Include="Undo.txt" />
     <Content Include="Views\Shared\DisplayTemplates\BooleanButtonLabel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\BooleanButtonLabel.cshtml" />
     <Content Include="Areas\Example\Views\Images\Index.cshtml" />

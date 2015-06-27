@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using Demo.Areas.Admin.Models;
 using Demo.Areas.Admin.ViewModels;
 using Demo.Utils;
+using Demo.Areas.Admin.Services;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -17,39 +18,36 @@ namespace Demo.Areas.Admin.Controllers
     public class ExperimentApplyController : Controller
     {
         private NCCUEntities db = new NCCUEntities();
+        private ExperimentApplyServices services = new ExperimentApplyServices();
 
         // GET: Admin/ExperimentApply
         public ActionResult Index()
         {
-            var Items = db.Experiment_Item.ToList();
-
-            var list = from p in db.Experiment_Apply
-                       select new ExperimentApplyIndexViewModel
-                       {
-                           Id = p.id,
-                           Items = TransferItems(p.TotalItem, Items),
-                           ModifyTime = string.Format("{0:yyyy/MM/dd}", p.ModifyTime),
-                           Title = p.Title
-                       };
-
-            return View(list.ToList());
+            return View(services.GetIndex());
         }
 
-        public string TransferItems(string totalItem, IEnumerable<Experiment_Item> nameList)
+        // GET: Admin/ExperimentApply/Create
+        public ActionResult Create()
         {
-            string returnValue = "";
-            JObject items = JsonConvert.DeserializeObject<JObject>(totalItem);
+            return View(services.GetCreate());
+        }
 
-            foreach (var item in items)
+        // GET: Admin/ExperimentApply/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
             {
-                int id = Convert.ToInt32(item.Key);
-                string a = item.Value.ToString();
-                bool value = item.Value.ToString().ToUpper().Equals("TRUE") ? true : false;
-                if (value)
-                    returnValue += nameList.Where(x => x.id == id).Select(x => x.Name).FirstOrDefault() + "/r/n";
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            return returnValue;
+            ExperimentApplyRUDViewModel model = services.GetEdit(id.Value);
+
+            if (model == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(model);
         }
 
         // GET: Admin/ExperimentApply/Details/5
@@ -59,36 +57,32 @@ namespace Demo.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Experiment_Apply experiment_Apply = db.Experiment_Apply.Find(id);
-            if (experiment_Apply == null)
+
+            ExperimentApplyRUDViewModel model = services.GetDetails(id.Value);
+
+            if (model == null)
             {
                 return HttpNotFound();
             }
-            return View(experiment_Apply);
+
+            return View(model);
         }
 
-        // GET: Admin/ExperimentApply/Create
-        public ActionResult Create()
+        // GET: Admin/ExperimentApply/Delete/5
+        public ActionResult Delete(int? id)
         {
-            var items = from p in db.Experiment_Item
-                        select new ExperimentItem
-                        {
-                            ItemId = p.id,
-                            Text = p.Name
-                        };
-
-            var policies = from p in GlobalData.UpdatePolicyList
-                           select new UpdatePolicy
-                           {
-                               id = p.id,
-                               Name = p.Name
-                           };
-
-            ExperimentApplyAddViewModel model = new ExperimentApplyAddViewModel()
+            if (id == null)
             {
-                ExperItemList = items.ToList(),
-                UpdatePolicyList = policies.ToList()
-            };
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            ExperimentApplyRUDViewModel model = services.GetDelete(id.Value);
+
+            if (model == null)
+            {
+                return HttpNotFound();
+            }
+
             return View(model);
         }
 
@@ -99,80 +93,30 @@ namespace Demo.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ExperimentApplyAddViewModel experiment_Apply)
         {
-            if (ModelState.IsValid)
+            if (services.Create(experiment_Apply))
             {
-                JObject itemsJson = new JObject();
-                foreach (var list in experiment_Apply.ExperItemList)
-                {
-                    itemsJson.Add(list.ItemId.ToString(), list.Checked);
-                }
-
-                JObject policiesJson = new JObject();
-                foreach (var list in experiment_Apply.UpdatePolicyList)
-                {
-                    policiesJson.Add(list.id.ToString(), list.Checked);
-                }
-
-                Experiment_Apply exp = new Experiment_Apply()
-                {
-                    Title = experiment_Apply.Title,
-                    Description = experiment_Apply.Description,
-                    TotalItem = itemsJson.ToString(),
-                    UpdatePolicy = policiesJson.ToString()
-                };
-
-                db.Experiment_Apply.Add(exp);
-                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             return View(experiment_Apply);
         }
 
-        // GET: Admin/ExperimentApply/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Experiment_Apply experiment_Apply = db.Experiment_Apply.Find(id);
-            if (experiment_Apply == null)
-            {
-                return HttpNotFound();
-            }
-            return View(experiment_Apply);
-        }
+        
 
         // POST: Admin/ExperimentApply/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,TotalItem,Description,UpdatePolicy,IsUpdate,CreateTime")] Experiment_Apply experiment_Apply)
+        public ActionResult Edit(ExperimentApplyRUDViewModel viewModel)
         {
-            if (ModelState.IsValid)
+            if (services.Edit(viewModel))
             {
-                db.Entry(experiment_Apply).State = EntityState.Modified;
-                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(experiment_Apply);
-        }
 
-        // GET: Admin/ExperimentApply/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Experiment_Apply experiment_Apply = db.Experiment_Apply.Find(id);
-            if (experiment_Apply == null)
-            {
-                return HttpNotFound();
-            }
-            return View(experiment_Apply);
+            return RedirectToAction("Index");
+            
         }
 
         // POST: Admin/ExperimentApply/Delete/5
@@ -180,9 +124,11 @@ namespace Demo.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Experiment_Apply experiment_Apply = db.Experiment_Apply.Find(id);
-            db.Experiment_Apply.Remove(experiment_Apply);
-            db.SaveChanges();
+            if (services.Delete(id))
+            {
+                return RedirectToAction("Index");
+            }
+
             return RedirectToAction("Index");
         }
 
@@ -190,7 +136,7 @@ namespace Demo.Areas.Admin.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                services.Dispose(disposing);
             }
             base.Dispose(disposing);
         }

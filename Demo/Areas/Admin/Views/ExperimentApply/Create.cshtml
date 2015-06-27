@@ -5,19 +5,25 @@
 }
 
 @section scripts {
-	@Scripts.Render("~/bundles/jqueryval")
-	<script>
-	$("input[type=file]").fileinput({
-        maxFileSize: 100,
-        allowedFileExtensions: ["jpg"]
-    });
-	</script>
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="@Url.Content("~/Scripts/jquery.icheck.min.js")"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('.square input').iCheck({
+                checkboxClass: 'icheckbox_square-red',
+                radioClass: 'iradio_square-red'
+            });
+
+        });
+    </script>
+
 }
 
 @using (Html.BeginForm("Create", ViewContext.RouteData.Values["controller"].ToString(), FormMethod.Post, new { @class = "form-horizontal form-bordered form-row-stripped" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h2>新增實驗項目</h2>
         <hr />
@@ -42,24 +48,28 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ExperItemList, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-4">
-                @for (int i = 0; i < Model.ExperItemList.Count; i++)
-                {
-                    @Html.CheckBoxFor(m => m.ExperItemList[i].Checked)
-                    @Html.DisplayFor(m => m.ExperItemList[i].Text)
-                    @Html.HiddenFor(m => m.ExperItemList[i].ItemId)
-                }
+                <div class="square">
+                    @for (int i = 0; i < Model.ExperItemList.Count; i++)
+                    {
+                        @Html.CheckBoxFor(m => m.ExperItemList[i].Checked)
+                        @Html.DisplayFor(m => m.ExperItemList[i].Text)
+                        @Html.HiddenFor(m => m.ExperItemList[i].ItemId)
+                    }
+                </div>
             </div>
         </div>
-        
+
         <div class="form-group">
             @Html.LabelFor(model => model.UpdatePolicyList, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-4">
-                @for (int i = 0; i < Model.UpdatePolicyList.Count; i++)
-                {
-                    @Html.CheckBoxFor(m => m.UpdatePolicyList[i].Checked)
-                    @Html.DisplayFor(m => m.UpdatePolicyList[i].Name)
-                    @Html.HiddenFor(m => m.UpdatePolicyList[i].id)
-                }
+                <div class="square">
+                    @for (int i = 0; i < Model.UpdatePolicyList.Count; i++)
+                    {
+                        @Html.CheckBoxFor(m => m.UpdatePolicyList[i].Checked)
+                        @Html.DisplayFor(m => m.UpdatePolicyList[i].Name)
+                        @Html.HiddenFor(m => m.UpdatePolicyList[i].id)
+                    }
+                </div>
             </div>
         </div>
 
@@ -69,7 +79,7 @@
             </div>
         </div>
     </div>
-    
+
 }
 
 <div>

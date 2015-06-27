@@ -22,7 +22,7 @@ namespace Demo.Areas.Admin.ViewModels
         public bool Checked { get; set; }
     }
 
-    public class ExperimentApplyViewModel
+    public class ExperimentApplyBaseViewModel
     {
         [DisplayName("描述")]
         [StringLength(500, ErrorMessage = "字數不能超過500")]
@@ -42,18 +42,21 @@ namespace Demo.Areas.Admin.ViewModels
         public List<UpdatePolicy> UpdatePolicyList { get; set; }
     }
 
-    public class ExperimentApplyEditViewModel : ExperimentApplyViewModel
+    public class ExperimentApplyRUDViewModel : ExperimentApplyBaseViewModel
     {
+        [DisplayName("實驗流水號")]
         public int id { get; set; }
-    }
 
-    public class ExperimentApplyAddViewModel : ExperimentApplyViewModel
-    {
         [DisplayName("創建時間")]
-        public DateTime CreateTime { get; set; }
+        public string CreateTime { get; set; }
 
         [DisplayName("修改時間")]
-        public DateTime ModifyTime { get; set; }
+        public string ModifyTime { get; set; }
+    }
+
+    public class ExperimentApplyAddViewModel : ExperimentApplyBaseViewModel
+    {
+        
     }
 
     public class ExperimentApplyIndexViewModel
@@ -70,4 +73,5 @@ namespace Demo.Areas.Admin.ViewModels
         [DisplayName("修改日期")]
         public string ModifyTime { get; set; }
     }
+
 }

@@ -23,7 +23,7 @@
           <Property Name="Description" Type="nvarchar" MaxLength="500" />
           <Property Name="UpdatePolicy" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="CreateTime" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
-          <Property Name="ModifyTime" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="ModifyTime" Type="datetime" Nullable="false" StoreGeneratedPattern="None" />
         </EntityType>
         <EntityType Name="Experiment_Attribute">
           <Key>
@@ -107,7 +107,7 @@
           <Property Name="UpdatePolicy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="ModifyTime" Type="DateTime" Nullable="false" Precision="3" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ModifyTime" Type="DateTime" Nullable="false" Precision="3" annotation:StoreGeneratedPattern="None" />
         </EntityType>
         <EntityType Name="Experiment_Attribute">
           <Key>
