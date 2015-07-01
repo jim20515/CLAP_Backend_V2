@@ -17,7 +17,6 @@ namespace Demo.Areas.Admin.Controllers
 {
     public class ExperimentApplyController : Controller
     {
-        private NCCUEntities db = new NCCUEntities();
         private ExperimentApplyServices services = new ExperimentApplyServices();
 
         // GET: Admin/ExperimentApply
@@ -139,6 +138,64 @@ namespace Demo.Areas.Admin.Controllers
                 services.Dispose(disposing);
             }
             base.Dispose(disposing);
+        }
+
+        public JsonResult GetExperimentList()
+        {
+            using (NCCUEntities db = new NCCUEntities())
+            {
+                var q = from p in db.Experiment_Apply
+                        select new
+                        {
+                            id = p.id,
+                            title = p.Title
+                        };
+
+                return Json(q.ToList(), JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public JsonResult GetExperimentDetail(int expId)
+        {
+            using (NCCUEntities db = new NCCUEntities())
+            {
+                Experiment_Apply experiment_Apply = db.Experiment_Apply.Find(expId);
+                if (experiment_Apply == null)
+                {
+                    return null;
+                }
+
+                JObject restoredItem = JsonConvert.DeserializeObject<JObject>(experiment_Apply.TotalItem);
+
+                var items = from p in db.vwExperimentItem.AsEnumerable()
+                            where (bool)restoredItem[p.ItemId.ToString()]
+                            select new
+                            {
+                                ItemId = p.id,
+                                ItemName = p.Name,
+                                AttrId = p.id,
+                                AttrName = p.AttrName,
+                                Condition = p.Condition
+                            };
+
+                JObject restoredPolicy = JsonConvert.DeserializeObject<JObject>(experiment_Apply.UpdatePolicy);
+
+                var policies = from p in GlobalData.UpdatePolicyList.AsEnumerable()
+                               where (bool)restoredPolicy[p.id.ToString()]
+                               select new UpdatePolicy
+                               {
+                                   id = p.id,
+                                   Name = p.Name
+                               };
+
+                var q = Json(new { 
+                    ModifyTime = experiment_Apply.ModifyTime, 
+                    Item = items.ToList(), 
+                    Policy = policies.ToList() 
+                }, JsonRequestBehavior.AllowGet);
+
+                return q;
+            }
         }
     }
 }

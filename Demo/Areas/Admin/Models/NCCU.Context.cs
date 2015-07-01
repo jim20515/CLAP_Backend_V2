@@ -31,5 +31,6 @@ namespace Demo.Areas.Admin.Models
         public virtual DbSet<Experiment_Item> Experiment_Item { get; set; }
         public virtual DbSet<Item_Acc> Item_Acc { get; set; }
         public virtual DbSet<Item_CalAct> Item_CalAct { get; set; }
+        public virtual DbSet<vwExperimentItem> vwExperimentItem { get; set; }
     }
 }

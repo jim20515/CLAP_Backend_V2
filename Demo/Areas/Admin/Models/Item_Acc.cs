@@ -18,5 +18,8 @@ namespace Demo.Areas.Admin.Models
         public string attr { get; set; }
         public string attrval { get; set; }
         public System.DateTime datetime { get; set; }
+        public int devicesId { get; set; }
+    
+        public virtual DeviceInfo DeviceInfo { get; set; }
     }
 }

@@ -12,14 +12,12 @@ namespace Demo.Areas.Admin.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Item_CalAct
+    public partial class vwExperimentItem
     {
+        public string Name { get; set; }
+        public string AttrName { get; set; }
         public int id { get; set; }
-        public string attr { get; set; }
-        public string attrval { get; set; }
-        public System.DateTime datetime { get; set; }
-        public int devicesId { get; set; }
-    
-        public virtual DeviceInfo DeviceInfo { get; set; }
+        public int ItemId { get; set; }
+        public Nullable<double> Condition { get; set; }
     }
 }

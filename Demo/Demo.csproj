@@ -58,6 +58,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -193,6 +194,8 @@
     <Compile Include="Areas\Admin\Controllers\DeviceInfoesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ExperimentApplyController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ItemAccController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RecordController.cs" />
     <Compile Include="Areas\Admin\Controllers\SettingController.cs" />
     <Compile Include="Areas\Admin\Models\DeviceInfo.cs">
       <DependentUpon>NCCU.tt</DependentUpon>
@@ -212,8 +215,7 @@
     <Compile Include="Areas\Admin\Models\Item_CalAct.cs">
       <DependentUpon>NCCU.tt</DependentUpon>
     </Compile>
-    <Compile Include="Areas\Admin\Models\Json\BaseJson.cs" />
-    <Compile Include="Areas\Admin\Models\Json\ExperimentApplyJson.cs" />
+    <Compile Include="Areas\Admin\Models\Json\ExperimentRecordJson.cs" />
     <Compile Include="Areas\Admin\Models\NCCU.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -229,8 +231,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>NCCU.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Areas\Admin\Models\vwExperimentItem.cs">
+      <DependentUpon>NCCU.tt</DependentUpon>
+    </Compile>
     <Compile Include="Areas\Admin\Services\ExperimentApplyServices.cs" />
     <Compile Include="Areas\Admin\ViewModels\ExperimentApplyViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\ItemAccViewModel.cs" />
     <Compile Include="Areas\Example\Controllers\EmployeesController.cs" />
     <Compile Include="Areas\Example\Controllers\FormsController.cs" />
     <Compile Include="Areas\Example\Controllers\ImagesController.cs" />
@@ -850,6 +856,8 @@
     <Content Include="Areas\Admin\Views\ExperimentApply\Details.cshtml" />
     <Content Include="Areas\Admin\Views\ExperimentApply\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ExperimentApply\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\DeviceInfoes\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ItemAcc\Index.cshtml" />
     <None Include="Properties\PublishProfiles\test.pubxml" />
     <Content Include="Scripts\DataTables\Chinese-traditional.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
