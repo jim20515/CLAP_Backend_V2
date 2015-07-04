@@ -53,6 +53,16 @@
           <Property Name="attrval" Type="nvarchar" MaxLength="20" />
           <Property Name="datetime" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
         </EntityType>
+        <EntityType Name="Item_Browser">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="devicesId" Type="int" Nullable="false" />
+          <Property Name="attr" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="attrval" Type="nvarchar" MaxLength="20" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Item_CalAct">
           <Key>
             <PropertyRef Name="id" />
@@ -62,6 +72,166 @@
           <Property Name="attr" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="attrval" Type="nvarchar" MaxLength="20" />
           <Property Name="datetime" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Item_Call">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="devicesId" Type="int" Nullable="false" />
+          <Property Name="attr" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="attrval" Type="nvarchar" MaxLength="20" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Item_Extmedia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="devicesId" Type="int" Nullable="false" />
+          <Property Name="attr" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="attrval" Type="nvarchar" MaxLength="20" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Item_Gps">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="devicesId" Type="int" Nullable="false" />
+          <Property Name="attr" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="attrval" Type="nvarchar" MaxLength="20" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Item_Gsm">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="devicesId" Type="int" Nullable="false" />
+          <Property Name="attr" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="attrval" Type="nvarchar" MaxLength="20" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Item_Li">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="devicesId" Type="int" Nullable="false" />
+          <Property Name="attr" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="attrval" Type="nvarchar" MaxLength="20" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Item_Locale">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="devicesId" Type="int" Nullable="false" />
+          <Property Name="attr" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="attrval" Type="nvarchar" MaxLength="20" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Item_Magn">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="devicesId" Type="int" Nullable="false" />
+          <Property Name="attr" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="attrval" Type="nvarchar" MaxLength="20" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Item_Ori">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="devicesId" Type="int" Nullable="false" />
+          <Property Name="attr" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="attrval" Type="nvarchar" MaxLength="20" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Item_Pkg">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="devicesId" Type="int" Nullable="false" />
+          <Property Name="attr" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="attrval" Type="nvarchar" MaxLength="20" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Item_Pow">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="devicesId" Type="int" Nullable="false" />
+          <Property Name="attr" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="attrval" Type="nvarchar" MaxLength="20" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Item_Pres">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="devicesId" Type="int" Nullable="false" />
+          <Property Name="attr" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="attrval" Type="nvarchar" MaxLength="20" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Item_Px">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="devicesId" Type="int" Nullable="false" />
+          <Property Name="attr" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="attrval" Type="nvarchar" MaxLength="20" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Item_Screen">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="devicesId" Type="int" Nullable="false" />
+          <Property Name="attr" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="attrval" Type="nvarchar" MaxLength="20" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Item_Sms">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="devicesId" Type="int" Nullable="false" />
+          <Property Name="attr" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="attrval" Type="nvarchar" MaxLength="20" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Item_Temp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="devicesId" Type="int" Nullable="false" />
+          <Property Name="attr" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="attrval" Type="nvarchar" MaxLength="20" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Item_Wifi">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="devicesId" Type="int" Nullable="false" />
+          <Property Name="attr" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="attrval" Type="nvarchar" MaxLength="20" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -102,6 +272,18 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Item_Browser_DeviceInfo">
+          <End Role="DeviceInfo" Type="Self.DeviceInfo" Multiplicity="1" />
+          <End Role="Item_Browser" Type="Self.Item_Browser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Browser">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Item_CalAct_DeviceInfo">
           <End Role="DeviceInfo" Type="Self.DeviceInfo" Multiplicity="1" />
           <End Role="Item_CalAct" Type="Self.Item_CalAct" Multiplicity="*" />
@@ -114,13 +296,222 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Item_Call_DeviceInfo">
+          <End Role="DeviceInfo" Type="Self.DeviceInfo" Multiplicity="1" />
+          <End Role="Item_Call" Type="Self.Item_Call" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Call">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Extmedia_DeviceInfo">
+          <End Role="DeviceInfo" Type="Self.DeviceInfo" Multiplicity="1" />
+          <End Role="Item_Extmedia" Type="Self.Item_Extmedia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Extmedia">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Gps_DeviceInfo">
+          <End Role="DeviceInfo" Type="Self.DeviceInfo" Multiplicity="1" />
+          <End Role="Item_Gps" Type="Self.Item_Gps" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Gps">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Gsm_DeviceInfo">
+          <End Role="DeviceInfo" Type="Self.DeviceInfo" Multiplicity="1" />
+          <End Role="Item_Gsm" Type="Self.Item_Gsm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Gsm">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Li_DeviceInfo">
+          <End Role="DeviceInfo" Type="Self.DeviceInfo" Multiplicity="1" />
+          <End Role="Item_Li" Type="Self.Item_Li" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Li">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Locale_DeviceInfo">
+          <End Role="DeviceInfo" Type="Self.DeviceInfo" Multiplicity="1" />
+          <End Role="Item_Locale" Type="Self.Item_Locale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Locale">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Magn_DeviceInfo">
+          <End Role="DeviceInfo" Type="Self.DeviceInfo" Multiplicity="1" />
+          <End Role="Item_Magn" Type="Self.Item_Magn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Magn">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Ori_DeviceInfo">
+          <End Role="DeviceInfo" Type="Self.DeviceInfo" Multiplicity="1" />
+          <End Role="Item_Ori" Type="Self.Item_Ori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Ori">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Pkg_DeviceInfo">
+          <End Role="DeviceInfo" Type="Self.DeviceInfo" Multiplicity="1" />
+          <End Role="Item_Pkg" Type="Self.Item_Pkg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Pkg">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Pow_DeviceInfo">
+          <End Role="DeviceInfo" Type="Self.DeviceInfo" Multiplicity="1" />
+          <End Role="Item_Pow" Type="Self.Item_Pow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Pow">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Pres_DeviceInfo">
+          <End Role="DeviceInfo" Type="Self.DeviceInfo" Multiplicity="1" />
+          <End Role="Item_Pres" Type="Self.Item_Pres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Pres">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Px_DeviceInfo">
+          <End Role="DeviceInfo" Type="Self.DeviceInfo" Multiplicity="1" />
+          <End Role="Item_Px" Type="Self.Item_Px" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Px">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Screen_DeviceInfo">
+          <End Role="DeviceInfo" Type="Self.DeviceInfo" Multiplicity="1" />
+          <End Role="Item_Screen" Type="Self.Item_Screen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Screen">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Sms_DeviceInfo">
+          <End Role="DeviceInfo" Type="Self.DeviceInfo" Multiplicity="1" />
+          <End Role="Item_Sms" Type="Self.Item_Sms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Sms">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Temp_DeviceInfo">
+          <End Role="DeviceInfo" Type="Self.DeviceInfo" Multiplicity="1" />
+          <End Role="Item_Temp" Type="Self.Item_Temp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Temp">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Wifi_DeviceInfo">
+          <End Role="DeviceInfo" Type="Self.DeviceInfo" Multiplicity="1" />
+          <End Role="Item_Wifi" Type="Self.Item_Wifi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Wifi">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="NCCUModelStoreContainer">
           <EntitySet Name="DeviceInfo" EntityType="Self.DeviceInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Experiment_Apply" EntityType="Self.Experiment_Apply" Schema="dbo" Table="Experiment.Apply" store:Type="Tables" />
           <EntitySet Name="Experiment_Attribute" EntityType="Self.Experiment_Attribute" Schema="dbo" Table="Experiment.Attribute" store:Type="Tables" />
           <EntitySet Name="Experiment_Item" EntityType="Self.Experiment_Item" Schema="dbo" Table="Experiment.Item" store:Type="Tables" />
           <EntitySet Name="Item_Acc" EntityType="Self.Item_Acc" Schema="dbo" Table="Item.Acc" store:Type="Tables" />
+          <EntitySet Name="Item_Browser" EntityType="Self.Item_Browser" Schema="dbo" Table="Item.Browser" store:Type="Tables" />
           <EntitySet Name="Item_CalAct" EntityType="Self.Item_CalAct" Schema="dbo" Table="Item.CalAct" store:Type="Tables" />
+          <EntitySet Name="Item_Call" EntityType="Self.Item_Call" Schema="dbo" Table="Item.Call" store:Type="Tables" />
+          <EntitySet Name="Item_Extmedia" EntityType="Self.Item_Extmedia" Schema="dbo" Table="Item.Extmedia" store:Type="Tables" />
+          <EntitySet Name="Item_Gps" EntityType="Self.Item_Gps" Schema="dbo" Table="Item.Gps" store:Type="Tables" />
+          <EntitySet Name="Item_Gsm" EntityType="Self.Item_Gsm" Schema="dbo" Table="Item.Gsm" store:Type="Tables" />
+          <EntitySet Name="Item_Li" EntityType="Self.Item_Li" Schema="dbo" Table="Item.Li" store:Type="Tables" />
+          <EntitySet Name="Item_Locale" EntityType="Self.Item_Locale" Schema="dbo" Table="Item.Locale" store:Type="Tables" />
+          <EntitySet Name="Item_Magn" EntityType="Self.Item_Magn" Schema="dbo" Table="Item.Magn" store:Type="Tables" />
+          <EntitySet Name="Item_Ori" EntityType="Self.Item_Ori" Schema="dbo" Table="Item.Ori" store:Type="Tables" />
+          <EntitySet Name="Item_Pkg" EntityType="Self.Item_Pkg" Schema="dbo" Table="Item.Pkg" store:Type="Tables" />
+          <EntitySet Name="Item_Pow" EntityType="Self.Item_Pow" Schema="dbo" Table="Item.Pow" store:Type="Tables" />
+          <EntitySet Name="Item_Pres" EntityType="Self.Item_Pres" Schema="dbo" Table="Item.Pres" store:Type="Tables" />
+          <EntitySet Name="Item_Px" EntityType="Self.Item_Px" Schema="dbo" Table="Item.Px" store:Type="Tables" />
+          <EntitySet Name="Item_Screen" EntityType="Self.Item_Screen" Schema="dbo" Table="Item.Screen" store:Type="Tables" />
+          <EntitySet Name="Item_Sms" EntityType="Self.Item_Sms" Schema="dbo" Table="Item.Sms" store:Type="Tables" />
+          <EntitySet Name="Item_Temp" EntityType="Self.Item_Temp" Schema="dbo" Table="Item.Temp" store:Type="Tables" />
+          <EntitySet Name="Item_Wifi" EntityType="Self.Item_Wifi" Schema="dbo" Table="Item.Wifi" store:Type="Tables" />
           <EntitySet Name="vwExperimentItem" EntityType="Self.vwExperimentItem" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vwExperimentItem].[Name] AS [Name], 
@@ -138,9 +529,77 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
             <End Role="DeviceInfo" EntitySet="DeviceInfo" />
             <End Role="Item_Acc" EntitySet="Item_Acc" />
           </AssociationSet>
+          <AssociationSet Name="FK_Item_Browser_DeviceInfo" Association="Self.FK_Item_Browser_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Browser" EntitySet="Item_Browser" />
+          </AssociationSet>
           <AssociationSet Name="FK_Item_CalAct_DeviceInfo" Association="Self.FK_Item_CalAct_DeviceInfo">
             <End Role="DeviceInfo" EntitySet="DeviceInfo" />
             <End Role="Item_CalAct" EntitySet="Item_CalAct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Call_DeviceInfo" Association="Self.FK_Item_Call_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Call" EntitySet="Item_Call" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Extmedia_DeviceInfo" Association="Self.FK_Item_Extmedia_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Extmedia" EntitySet="Item_Extmedia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Gps_DeviceInfo" Association="Self.FK_Item_Gps_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Gps" EntitySet="Item_Gps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Gsm_DeviceInfo" Association="Self.FK_Item_Gsm_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Gsm" EntitySet="Item_Gsm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Li_DeviceInfo" Association="Self.FK_Item_Li_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Li" EntitySet="Item_Li" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Locale_DeviceInfo" Association="Self.FK_Item_Locale_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Locale" EntitySet="Item_Locale" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Magn_DeviceInfo" Association="Self.FK_Item_Magn_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Magn" EntitySet="Item_Magn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Ori_DeviceInfo" Association="Self.FK_Item_Ori_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Ori" EntitySet="Item_Ori" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Pkg_DeviceInfo" Association="Self.FK_Item_Pkg_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Pkg" EntitySet="Item_Pkg" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Pow_DeviceInfo" Association="Self.FK_Item_Pow_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Pow" EntitySet="Item_Pow" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Pres_DeviceInfo" Association="Self.FK_Item_Pres_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Pres" EntitySet="Item_Pres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Px_DeviceInfo" Association="Self.FK_Item_Px_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Px" EntitySet="Item_Px" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Screen_DeviceInfo" Association="Self.FK_Item_Screen_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Screen" EntitySet="Item_Screen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Sms_DeviceInfo" Association="Self.FK_Item_Sms_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Sms" EntitySet="Item_Sms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Temp_DeviceInfo" Association="Self.FK_Item_Temp_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Temp" EntitySet="Item_Temp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Wifi_DeviceInfo" Association="Self.FK_Item_Wifi_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Wifi" EntitySet="Item_Wifi" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -156,6 +615,23 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
           <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Item_Acc" Relationship="NCCUModel.FK_Item_Acc_DeviceInfo" FromRole="DeviceInfo" ToRole="Item_Acc" />
           <NavigationProperty Name="Item_CalAct" Relationship="NCCUModel.FK_Item_CalAct_DeviceInfo" FromRole="DeviceInfo" ToRole="Item_CalAct" />
+          <NavigationProperty Name="Item_Browser" Relationship="NCCUModel.FK_Item_Browser_DeviceInfo" FromRole="DeviceInfo" ToRole="Item_Browser" />
+          <NavigationProperty Name="Item_Call" Relationship="NCCUModel.FK_Item_Call_DeviceInfo" FromRole="DeviceInfo" ToRole="Item_Call" />
+          <NavigationProperty Name="Item_Extmedia" Relationship="NCCUModel.FK_Item_Extmedia_DeviceInfo" FromRole="DeviceInfo" ToRole="Item_Extmedia" />
+          <NavigationProperty Name="Item_Gps" Relationship="NCCUModel.FK_Item_Gps_DeviceInfo" FromRole="DeviceInfo" ToRole="Item_Gps" />
+          <NavigationProperty Name="Item_Gsm" Relationship="NCCUModel.FK_Item_Gsm_DeviceInfo" FromRole="DeviceInfo" ToRole="Item_Gsm" />
+          <NavigationProperty Name="Item_Li" Relationship="NCCUModel.FK_Item_Li_DeviceInfo" FromRole="DeviceInfo" ToRole="Item_Li" />
+          <NavigationProperty Name="Item_Locale" Relationship="NCCUModel.FK_Item_Locale_DeviceInfo" FromRole="DeviceInfo" ToRole="Item_Locale" />
+          <NavigationProperty Name="Item_Magn" Relationship="NCCUModel.FK_Item_Magn_DeviceInfo" FromRole="DeviceInfo" ToRole="Item_Magn" />
+          <NavigationProperty Name="Item_Ori" Relationship="NCCUModel.FK_Item_Ori_DeviceInfo" FromRole="DeviceInfo" ToRole="Item_Ori" />
+          <NavigationProperty Name="Item_Pkg" Relationship="NCCUModel.FK_Item_Pkg_DeviceInfo" FromRole="DeviceInfo" ToRole="Item_Pkg" />
+          <NavigationProperty Name="Item_Pow" Relationship="NCCUModel.FK_Item_Pow_DeviceInfo" FromRole="DeviceInfo" ToRole="Item_Pow" />
+          <NavigationProperty Name="Item_Pres" Relationship="NCCUModel.FK_Item_Pres_DeviceInfo" FromRole="DeviceInfo" ToRole="Item_Pres" />
+          <NavigationProperty Name="Item_Px" Relationship="NCCUModel.FK_Item_Px_DeviceInfo" FromRole="DeviceInfo" ToRole="Item_Px" />
+          <NavigationProperty Name="Item_Screen" Relationship="NCCUModel.FK_Item_Screen_DeviceInfo" FromRole="DeviceInfo" ToRole="Item_Screen" />
+          <NavigationProperty Name="Item_Sms" Relationship="NCCUModel.FK_Item_Sms_DeviceInfo" FromRole="DeviceInfo" ToRole="Item_Sms" />
+          <NavigationProperty Name="Item_Temp" Relationship="NCCUModel.FK_Item_Temp_DeviceInfo" FromRole="DeviceInfo" ToRole="Item_Temp" />
+          <NavigationProperty Name="Item_Wifi" Relationship="NCCUModel.FK_Item_Wifi_DeviceInfo" FromRole="DeviceInfo" ToRole="Item_Wifi" />
         </EntityType>
         <EntityType Name="Experiment_Apply">
           <Key>
@@ -243,6 +719,91 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
             <End Role="Item_CalAct" EntitySet="Item_CalAct" />
           </AssociationSet>
           <EntitySet Name="vwExperimentItem" EntityType="NCCUModel.vwExperimentItem" />
+          <EntitySet Name="Item_Browser" EntityType="NCCUModel.Item_Browser" />
+          <EntitySet Name="Item_Call" EntityType="NCCUModel.Item_Call" />
+          <EntitySet Name="Item_Extmedia" EntityType="NCCUModel.Item_Extmedia" />
+          <EntitySet Name="Item_Gps" EntityType="NCCUModel.Item_Gps" />
+          <EntitySet Name="Item_Gsm" EntityType="NCCUModel.Item_Gsm" />
+          <EntitySet Name="Item_Li" EntityType="NCCUModel.Item_Li" />
+          <EntitySet Name="Item_Locale" EntityType="NCCUModel.Item_Locale" />
+          <EntitySet Name="Item_Magn" EntityType="NCCUModel.Item_Magn" />
+          <EntitySet Name="Item_Ori" EntityType="NCCUModel.Item_Ori" />
+          <EntitySet Name="Item_Pkg" EntityType="NCCUModel.Item_Pkg" />
+          <EntitySet Name="Item_Pow" EntityType="NCCUModel.Item_Pow" />
+          <EntitySet Name="Item_Pres" EntityType="NCCUModel.Item_Pres" />
+          <EntitySet Name="Item_Px" EntityType="NCCUModel.Item_Px" />
+          <EntitySet Name="Item_Screen" EntityType="NCCUModel.Item_Screen" />
+          <EntitySet Name="Item_Sms" EntityType="NCCUModel.Item_Sms" />
+          <EntitySet Name="Item_Temp" EntityType="NCCUModel.Item_Temp" />
+          <EntitySet Name="Item_Wifi" EntityType="NCCUModel.Item_Wifi" />
+          <AssociationSet Name="FK_Item_Browser_DeviceInfo" Association="NCCUModel.FK_Item_Browser_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Browser" EntitySet="Item_Browser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Call_DeviceInfo" Association="NCCUModel.FK_Item_Call_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Call" EntitySet="Item_Call" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Extmedia_DeviceInfo" Association="NCCUModel.FK_Item_Extmedia_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Extmedia" EntitySet="Item_Extmedia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Gps_DeviceInfo" Association="NCCUModel.FK_Item_Gps_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Gps" EntitySet="Item_Gps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Gsm_DeviceInfo" Association="NCCUModel.FK_Item_Gsm_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Gsm" EntitySet="Item_Gsm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Li_DeviceInfo" Association="NCCUModel.FK_Item_Li_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Li" EntitySet="Item_Li" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Locale_DeviceInfo" Association="NCCUModel.FK_Item_Locale_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Locale" EntitySet="Item_Locale" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Magn_DeviceInfo" Association="NCCUModel.FK_Item_Magn_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Magn" EntitySet="Item_Magn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Ori_DeviceInfo" Association="NCCUModel.FK_Item_Ori_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Ori" EntitySet="Item_Ori" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Pkg_DeviceInfo" Association="NCCUModel.FK_Item_Pkg_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Pkg" EntitySet="Item_Pkg" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Pow_DeviceInfo" Association="NCCUModel.FK_Item_Pow_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Pow" EntitySet="Item_Pow" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Pres_DeviceInfo" Association="NCCUModel.FK_Item_Pres_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Pres" EntitySet="Item_Pres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Px_DeviceInfo" Association="NCCUModel.FK_Item_Px_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Px" EntitySet="Item_Px" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Screen_DeviceInfo" Association="NCCUModel.FK_Item_Screen_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Screen" EntitySet="Item_Screen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Sms_DeviceInfo" Association="NCCUModel.FK_Item_Sms_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Sms" EntitySet="Item_Sms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Temp_DeviceInfo" Association="NCCUModel.FK_Item_Temp_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Temp" EntitySet="Item_Temp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Wifi_DeviceInfo" Association="NCCUModel.FK_Item_Wifi_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Wifi" EntitySet="Item_Wifi" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="FK_Item_Acc_DeviceInfo">
           <End Type="NCCUModel.DeviceInfo" Role="DeviceInfo" Multiplicity="1" />
@@ -281,6 +842,397 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
           <Property Name="ItemId" Type="Int32" Nullable="false" />
           <Property Name="Condition" Type="Double" />
         </EntityType>
+        <EntityType Name="Item_Browser">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="devicesId" Type="Int32" Nullable="false" />
+          <Property Name="attr" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="attrval" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DeviceInfo" Relationship="NCCUModel.FK_Item_Browser_DeviceInfo" FromRole="Item_Browser" ToRole="DeviceInfo" />
+        </EntityType>
+        <EntityType Name="Item_Call">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="devicesId" Type="Int32" Nullable="false" />
+          <Property Name="attr" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="attrval" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DeviceInfo" Relationship="NCCUModel.FK_Item_Call_DeviceInfo" FromRole="Item_Call" ToRole="DeviceInfo" />
+        </EntityType>
+        <EntityType Name="Item_Extmedia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="devicesId" Type="Int32" Nullable="false" />
+          <Property Name="attr" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="attrval" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DeviceInfo" Relationship="NCCUModel.FK_Item_Extmedia_DeviceInfo" FromRole="Item_Extmedia" ToRole="DeviceInfo" />
+        </EntityType>
+        <EntityType Name="Item_Gps">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="devicesId" Type="Int32" Nullable="false" />
+          <Property Name="attr" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="attrval" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DeviceInfo" Relationship="NCCUModel.FK_Item_Gps_DeviceInfo" FromRole="Item_Gps" ToRole="DeviceInfo" />
+        </EntityType>
+        <EntityType Name="Item_Gsm">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="devicesId" Type="Int32" Nullable="false" />
+          <Property Name="attr" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="attrval" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DeviceInfo" Relationship="NCCUModel.FK_Item_Gsm_DeviceInfo" FromRole="Item_Gsm" ToRole="DeviceInfo" />
+        </EntityType>
+        <EntityType Name="Item_Li">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="devicesId" Type="Int32" Nullable="false" />
+          <Property Name="attr" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="attrval" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DeviceInfo" Relationship="NCCUModel.FK_Item_Li_DeviceInfo" FromRole="Item_Li" ToRole="DeviceInfo" />
+        </EntityType>
+        <EntityType Name="Item_Locale">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="devicesId" Type="Int32" Nullable="false" />
+          <Property Name="attr" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="attrval" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DeviceInfo" Relationship="NCCUModel.FK_Item_Locale_DeviceInfo" FromRole="Item_Locale" ToRole="DeviceInfo" />
+        </EntityType>
+        <EntityType Name="Item_Magn">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="devicesId" Type="Int32" Nullable="false" />
+          <Property Name="attr" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="attrval" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DeviceInfo" Relationship="NCCUModel.FK_Item_Magn_DeviceInfo" FromRole="Item_Magn" ToRole="DeviceInfo" />
+        </EntityType>
+        <EntityType Name="Item_Ori">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="devicesId" Type="Int32" Nullable="false" />
+          <Property Name="attr" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="attrval" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DeviceInfo" Relationship="NCCUModel.FK_Item_Ori_DeviceInfo" FromRole="Item_Ori" ToRole="DeviceInfo" />
+        </EntityType>
+        <EntityType Name="Item_Pkg">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="devicesId" Type="Int32" Nullable="false" />
+          <Property Name="attr" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="attrval" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DeviceInfo" Relationship="NCCUModel.FK_Item_Pkg_DeviceInfo" FromRole="Item_Pkg" ToRole="DeviceInfo" />
+        </EntityType>
+        <EntityType Name="Item_Pow">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="devicesId" Type="Int32" Nullable="false" />
+          <Property Name="attr" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="attrval" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DeviceInfo" Relationship="NCCUModel.FK_Item_Pow_DeviceInfo" FromRole="Item_Pow" ToRole="DeviceInfo" />
+        </EntityType>
+        <EntityType Name="Item_Pres">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="devicesId" Type="Int32" Nullable="false" />
+          <Property Name="attr" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="attrval" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DeviceInfo" Relationship="NCCUModel.FK_Item_Pres_DeviceInfo" FromRole="Item_Pres" ToRole="DeviceInfo" />
+        </EntityType>
+        <EntityType Name="Item_Px">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="devicesId" Type="Int32" Nullable="false" />
+          <Property Name="attr" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="attrval" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DeviceInfo" Relationship="NCCUModel.FK_Item_Px_DeviceInfo" FromRole="Item_Px" ToRole="DeviceInfo" />
+        </EntityType>
+        <EntityType Name="Item_Screen">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="devicesId" Type="Int32" Nullable="false" />
+          <Property Name="attr" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="attrval" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DeviceInfo" Relationship="NCCUModel.FK_Item_Screen_DeviceInfo" FromRole="Item_Screen" ToRole="DeviceInfo" />
+        </EntityType>
+        <EntityType Name="Item_Sms">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="devicesId" Type="Int32" Nullable="false" />
+          <Property Name="attr" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="attrval" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DeviceInfo" Relationship="NCCUModel.FK_Item_Sms_DeviceInfo" FromRole="Item_Sms" ToRole="DeviceInfo" />
+        </EntityType>
+        <EntityType Name="Item_Temp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="devicesId" Type="Int32" Nullable="false" />
+          <Property Name="attr" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="attrval" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DeviceInfo" Relationship="NCCUModel.FK_Item_Temp_DeviceInfo" FromRole="Item_Temp" ToRole="DeviceInfo" />
+        </EntityType>
+        <EntityType Name="Item_Wifi">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="devicesId" Type="Int32" Nullable="false" />
+          <Property Name="attr" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="attrval" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DeviceInfo" Relationship="NCCUModel.FK_Item_Wifi_DeviceInfo" FromRole="Item_Wifi" ToRole="DeviceInfo" />
+        </EntityType>
+        <Association Name="FK_Item_Browser_DeviceInfo">
+          <End Type="NCCUModel.DeviceInfo" Role="DeviceInfo" Multiplicity="1" />
+          <End Type="NCCUModel.Item_Browser" Role="Item_Browser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Browser">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Call_DeviceInfo">
+          <End Type="NCCUModel.DeviceInfo" Role="DeviceInfo" Multiplicity="1" />
+          <End Type="NCCUModel.Item_Call" Role="Item_Call" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Call">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Extmedia_DeviceInfo">
+          <End Type="NCCUModel.DeviceInfo" Role="DeviceInfo" Multiplicity="1" />
+          <End Type="NCCUModel.Item_Extmedia" Role="Item_Extmedia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Extmedia">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Gps_DeviceInfo">
+          <End Type="NCCUModel.DeviceInfo" Role="DeviceInfo" Multiplicity="1" />
+          <End Type="NCCUModel.Item_Gps" Role="Item_Gps" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Gps">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Gsm_DeviceInfo">
+          <End Type="NCCUModel.DeviceInfo" Role="DeviceInfo" Multiplicity="1" />
+          <End Type="NCCUModel.Item_Gsm" Role="Item_Gsm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Gsm">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Li_DeviceInfo">
+          <End Type="NCCUModel.DeviceInfo" Role="DeviceInfo" Multiplicity="1" />
+          <End Type="NCCUModel.Item_Li" Role="Item_Li" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Li">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Locale_DeviceInfo">
+          <End Type="NCCUModel.DeviceInfo" Role="DeviceInfo" Multiplicity="1" />
+          <End Type="NCCUModel.Item_Locale" Role="Item_Locale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Locale">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Magn_DeviceInfo">
+          <End Type="NCCUModel.DeviceInfo" Role="DeviceInfo" Multiplicity="1" />
+          <End Type="NCCUModel.Item_Magn" Role="Item_Magn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Magn">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Ori_DeviceInfo">
+          <End Type="NCCUModel.DeviceInfo" Role="DeviceInfo" Multiplicity="1" />
+          <End Type="NCCUModel.Item_Ori" Role="Item_Ori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Ori">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Pkg_DeviceInfo">
+          <End Type="NCCUModel.DeviceInfo" Role="DeviceInfo" Multiplicity="1" />
+          <End Type="NCCUModel.Item_Pkg" Role="Item_Pkg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Pkg">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Pow_DeviceInfo">
+          <End Type="NCCUModel.DeviceInfo" Role="DeviceInfo" Multiplicity="1" />
+          <End Type="NCCUModel.Item_Pow" Role="Item_Pow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Pow">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Pres_DeviceInfo">
+          <End Type="NCCUModel.DeviceInfo" Role="DeviceInfo" Multiplicity="1" />
+          <End Type="NCCUModel.Item_Pres" Role="Item_Pres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Pres">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Px_DeviceInfo">
+          <End Type="NCCUModel.DeviceInfo" Role="DeviceInfo" Multiplicity="1" />
+          <End Type="NCCUModel.Item_Px" Role="Item_Px" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Px">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Screen_DeviceInfo">
+          <End Type="NCCUModel.DeviceInfo" Role="DeviceInfo" Multiplicity="1" />
+          <End Type="NCCUModel.Item_Screen" Role="Item_Screen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Screen">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Sms_DeviceInfo">
+          <End Type="NCCUModel.DeviceInfo" Role="DeviceInfo" Multiplicity="1" />
+          <End Type="NCCUModel.Item_Sms" Role="Item_Sms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Sms">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Temp_DeviceInfo">
+          <End Type="NCCUModel.DeviceInfo" Role="DeviceInfo" Multiplicity="1" />
+          <End Type="NCCUModel.Item_Temp" Role="Item_Temp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Temp">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Wifi_DeviceInfo">
+          <End Type="NCCUModel.DeviceInfo" Role="DeviceInfo" Multiplicity="1" />
+          <End Type="NCCUModel.Item_Wifi" Role="Item_Wifi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Wifi">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -359,6 +1311,193 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="AttrName" ColumnName="AttrName" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item_Browser">
+            <EntityTypeMapping TypeName="NCCUModel.Item_Browser">
+              <MappingFragment StoreEntitySet="Item_Browser">
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="attrval" ColumnName="attrval" />
+                <ScalarProperty Name="attr" ColumnName="attr" />
+                <ScalarProperty Name="devicesId" ColumnName="devicesId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item_Call">
+            <EntityTypeMapping TypeName="NCCUModel.Item_Call">
+              <MappingFragment StoreEntitySet="Item_Call">
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="attrval" ColumnName="attrval" />
+                <ScalarProperty Name="attr" ColumnName="attr" />
+                <ScalarProperty Name="devicesId" ColumnName="devicesId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item_Extmedia">
+            <EntityTypeMapping TypeName="NCCUModel.Item_Extmedia">
+              <MappingFragment StoreEntitySet="Item_Extmedia">
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="attrval" ColumnName="attrval" />
+                <ScalarProperty Name="attr" ColumnName="attr" />
+                <ScalarProperty Name="devicesId" ColumnName="devicesId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item_Gps">
+            <EntityTypeMapping TypeName="NCCUModel.Item_Gps">
+              <MappingFragment StoreEntitySet="Item_Gps">
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="attrval" ColumnName="attrval" />
+                <ScalarProperty Name="attr" ColumnName="attr" />
+                <ScalarProperty Name="devicesId" ColumnName="devicesId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item_Gsm">
+            <EntityTypeMapping TypeName="NCCUModel.Item_Gsm">
+              <MappingFragment StoreEntitySet="Item_Gsm">
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="attrval" ColumnName="attrval" />
+                <ScalarProperty Name="attr" ColumnName="attr" />
+                <ScalarProperty Name="devicesId" ColumnName="devicesId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item_Li">
+            <EntityTypeMapping TypeName="NCCUModel.Item_Li">
+              <MappingFragment StoreEntitySet="Item_Li">
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="attrval" ColumnName="attrval" />
+                <ScalarProperty Name="attr" ColumnName="attr" />
+                <ScalarProperty Name="devicesId" ColumnName="devicesId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item_Locale">
+            <EntityTypeMapping TypeName="NCCUModel.Item_Locale">
+              <MappingFragment StoreEntitySet="Item_Locale">
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="attrval" ColumnName="attrval" />
+                <ScalarProperty Name="attr" ColumnName="attr" />
+                <ScalarProperty Name="devicesId" ColumnName="devicesId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item_Magn">
+            <EntityTypeMapping TypeName="NCCUModel.Item_Magn">
+              <MappingFragment StoreEntitySet="Item_Magn">
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="attrval" ColumnName="attrval" />
+                <ScalarProperty Name="attr" ColumnName="attr" />
+                <ScalarProperty Name="devicesId" ColumnName="devicesId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item_Ori">
+            <EntityTypeMapping TypeName="NCCUModel.Item_Ori">
+              <MappingFragment StoreEntitySet="Item_Ori">
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="attrval" ColumnName="attrval" />
+                <ScalarProperty Name="attr" ColumnName="attr" />
+                <ScalarProperty Name="devicesId" ColumnName="devicesId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item_Pkg">
+            <EntityTypeMapping TypeName="NCCUModel.Item_Pkg">
+              <MappingFragment StoreEntitySet="Item_Pkg">
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="attrval" ColumnName="attrval" />
+                <ScalarProperty Name="attr" ColumnName="attr" />
+                <ScalarProperty Name="devicesId" ColumnName="devicesId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item_Pow">
+            <EntityTypeMapping TypeName="NCCUModel.Item_Pow">
+              <MappingFragment StoreEntitySet="Item_Pow">
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="attrval" ColumnName="attrval" />
+                <ScalarProperty Name="attr" ColumnName="attr" />
+                <ScalarProperty Name="devicesId" ColumnName="devicesId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item_Pres">
+            <EntityTypeMapping TypeName="NCCUModel.Item_Pres">
+              <MappingFragment StoreEntitySet="Item_Pres">
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="attrval" ColumnName="attrval" />
+                <ScalarProperty Name="attr" ColumnName="attr" />
+                <ScalarProperty Name="devicesId" ColumnName="devicesId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item_Px">
+            <EntityTypeMapping TypeName="NCCUModel.Item_Px">
+              <MappingFragment StoreEntitySet="Item_Px">
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="attrval" ColumnName="attrval" />
+                <ScalarProperty Name="attr" ColumnName="attr" />
+                <ScalarProperty Name="devicesId" ColumnName="devicesId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item_Screen">
+            <EntityTypeMapping TypeName="NCCUModel.Item_Screen">
+              <MappingFragment StoreEntitySet="Item_Screen">
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="attrval" ColumnName="attrval" />
+                <ScalarProperty Name="attr" ColumnName="attr" />
+                <ScalarProperty Name="devicesId" ColumnName="devicesId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item_Sms">
+            <EntityTypeMapping TypeName="NCCUModel.Item_Sms">
+              <MappingFragment StoreEntitySet="Item_Sms">
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="attrval" ColumnName="attrval" />
+                <ScalarProperty Name="attr" ColumnName="attr" />
+                <ScalarProperty Name="devicesId" ColumnName="devicesId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item_Temp">
+            <EntityTypeMapping TypeName="NCCUModel.Item_Temp">
+              <MappingFragment StoreEntitySet="Item_Temp">
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="attrval" ColumnName="attrval" />
+                <ScalarProperty Name="attr" ColumnName="attr" />
+                <ScalarProperty Name="devicesId" ColumnName="devicesId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item_Wifi">
+            <EntityTypeMapping TypeName="NCCUModel.Item_Wifi">
+              <MappingFragment StoreEntitySet="Item_Wifi">
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="attrval" ColumnName="attrval" />
+                <ScalarProperty Name="attr" ColumnName="attr" />
+                <ScalarProperty Name="devicesId" ColumnName="devicesId" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -26,7 +26,7 @@ namespace Demo.Areas.Admin.Services
                        {
                            Id = p.id,
                            Items = TransferItems(p.TotalItem, Items),
-                           ModifyTime = string.Format("{0:yyyy/MM/dd}", p.ModifyTime),
+                           ModifyTime = string.Format("{0:yyyy/MM/dd HH:mm:ss}", p.ModifyTime),
                            Title = p.Title
                        });
 

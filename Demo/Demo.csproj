@@ -194,6 +194,24 @@
     <Compile Include="Areas\Admin\Controllers\DeviceInfoesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ExperimentApplyController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ItemCalActController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ItemCallController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ItemExtmediaController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ItemGpsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ItemGsmController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ItemLiController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ItemLocaleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ItemMagnController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ItemOriController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ItemPkgController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ItemPowController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ItemPresController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ItemPxController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ItemScreenController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ItemSmsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ItemTempController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ItemWifiController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ItemBrowserController.cs" />
     <Compile Include="Areas\Admin\Controllers\ItemAccController.cs" />
     <Compile Include="Areas\Admin\Controllers\RecordController.cs" />
     <Compile Include="Areas\Admin\Controllers\SettingController.cs" />
@@ -212,7 +230,58 @@
     <Compile Include="Areas\Admin\Models\Item_Acc.cs">
       <DependentUpon>NCCU.tt</DependentUpon>
     </Compile>
+    <Compile Include="Areas\Admin\Models\Item_Browser.cs">
+      <DependentUpon>NCCU.tt</DependentUpon>
+    </Compile>
     <Compile Include="Areas\Admin\Models\Item_CalAct.cs">
+      <DependentUpon>NCCU.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Item_Call.cs">
+      <DependentUpon>NCCU.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Item_Extmedia.cs">
+      <DependentUpon>NCCU.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Item_Gps.cs">
+      <DependentUpon>NCCU.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Item_Gsm.cs">
+      <DependentUpon>NCCU.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Item_Li.cs">
+      <DependentUpon>NCCU.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Item_Locale.cs">
+      <DependentUpon>NCCU.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Item_Magn.cs">
+      <DependentUpon>NCCU.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Item_Ori.cs">
+      <DependentUpon>NCCU.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Item_Pkg.cs">
+      <DependentUpon>NCCU.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Item_Pow.cs">
+      <DependentUpon>NCCU.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Item_Pres.cs">
+      <DependentUpon>NCCU.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Item_Px.cs">
+      <DependentUpon>NCCU.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Item_Screen.cs">
+      <DependentUpon>NCCU.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Item_Sms.cs">
+      <DependentUpon>NCCU.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Item_Temp.cs">
+      <DependentUpon>NCCU.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Item_Wifi.cs">
       <DependentUpon>NCCU.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\Json\ExperimentRecordJson.cs" />
@@ -236,7 +305,7 @@
     </Compile>
     <Compile Include="Areas\Admin\Services\ExperimentApplyServices.cs" />
     <Compile Include="Areas\Admin\ViewModels\ExperimentApplyViewModel.cs" />
-    <Compile Include="Areas\Admin\ViewModels\ItemAccViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\ItemViewModel.cs" />
     <Compile Include="Areas\Example\Controllers\EmployeesController.cs" />
     <Compile Include="Areas\Example\Controllers\FormsController.cs" />
     <Compile Include="Areas\Example\Controllers\ImagesController.cs" />
@@ -858,6 +927,24 @@
     <Content Include="Areas\Admin\Views\ExperimentApply\Index.cshtml" />
     <Content Include="Areas\Admin\Views\DeviceInfoes\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ItemAcc\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ItemBrowser\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ItemPkg\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ItemOri\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ItemMagn\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ItemLocale\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ItemLi\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ItemGsm\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ItemGps\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ItemExtmedia\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ItemCalAct\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ItemCall\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ItemPx\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ItemPres\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ItemPow\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ItemScreen\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ItemSms\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ItemWifi\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ItemTemp\Index.cshtml" />
     <None Include="Properties\PublishProfiles\test.pubxml" />
     <Content Include="Scripts\DataTables\Chinese-traditional.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

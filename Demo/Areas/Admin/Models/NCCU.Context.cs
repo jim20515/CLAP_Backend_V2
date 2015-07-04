@@ -32,5 +32,22 @@ namespace Demo.Areas.Admin.Models
         public virtual DbSet<Item_Acc> Item_Acc { get; set; }
         public virtual DbSet<Item_CalAct> Item_CalAct { get; set; }
         public virtual DbSet<vwExperimentItem> vwExperimentItem { get; set; }
+        public virtual DbSet<Item_Browser> Item_Browser { get; set; }
+        public virtual DbSet<Item_Call> Item_Call { get; set; }
+        public virtual DbSet<Item_Extmedia> Item_Extmedia { get; set; }
+        public virtual DbSet<Item_Gps> Item_Gps { get; set; }
+        public virtual DbSet<Item_Gsm> Item_Gsm { get; set; }
+        public virtual DbSet<Item_Li> Item_Li { get; set; }
+        public virtual DbSet<Item_Locale> Item_Locale { get; set; }
+        public virtual DbSet<Item_Magn> Item_Magn { get; set; }
+        public virtual DbSet<Item_Ori> Item_Ori { get; set; }
+        public virtual DbSet<Item_Pkg> Item_Pkg { get; set; }
+        public virtual DbSet<Item_Pow> Item_Pow { get; set; }
+        public virtual DbSet<Item_Pres> Item_Pres { get; set; }
+        public virtual DbSet<Item_Px> Item_Px { get; set; }
+        public virtual DbSet<Item_Screen> Item_Screen { get; set; }
+        public virtual DbSet<Item_Sms> Item_Sms { get; set; }
+        public virtual DbSet<Item_Temp> Item_Temp { get; set; }
+        public virtual DbSet<Item_Wifi> Item_Wifi { get; set; }
     }
 }

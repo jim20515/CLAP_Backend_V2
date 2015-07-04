@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Demo.Areas.Admin.ViewModels.ExperimentApplyIndexViewModel>
+﻿@model IEnumerable<Demo.Areas.Admin.ViewModels.ItemPresViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -6,22 +6,19 @@
 
 <div class="row">
     <div class="col-md-12">
-        <h3 class="page-header">實驗設定</h3>
+        <h3 class="page-header">壓力感測器</h3>
     </div>
     <!-- /.col-md-12 -->
 </div>
 <!-- /.row -->
-
 @section scripts {
     <script src="@Url.Content("~/js/table-admin.js")"></script>
     <script>
         table.columnFilter({
             sPlaceHolder: "thead:after",
             aoColumns: [
-				{ sSelector: "#col-1", type: "number-range" },
-				{ sSelector: "#col-2"},
-				{ sSelector: "#col-3"},
-				{ sSelector: "#col-4", type: "date-range" }
+				{ sSelector: "#col-1" },
+				{ sSelector: "#col-3", type: "date-range" }
             ]
         });
     </script>
@@ -31,12 +28,12 @@
 <div class="panel panel-primary">
     <div class="panel-heading clearfix">
         <h3 class="panel-title"></h3>
-        <div class="pull-left">
+        @*<div class="pull-left">
             <a href="@Url.Action("Create")" id="newData" class="btn btn-sm btn-ghost btn-outline"><i class="fa fa-plus"></i> 新增</a>
             <a href="@Url.Action("Details")" id="detailData" class="btn btn-sm btn-ghost btn-outline hidden"><i class="fa fa-file-text-o"></i> 詳細</a>
             <a href="@Url.Action("Edit")" id="editData" class="btn btn-sm btn-ghost btn-outline hidden"><i class="fa fa-pencil"></i> 修改</a>
             <a href="@Url.Action("Delete")" id="deleteData" class="btn btn-sm btn-ghost btn-outline hidden"><i class="fa fa-trash"></i> 刪除</a>
-        </div>
+        </div>*@
         <div class="pull-right">
             <a href="#" id="filter-toggle" class="btn btn-sm btn-ghost btn-outline" data-toggle="modal" data-target="#filterModal"><i class="fa fa-filter"></i> 進階搜尋</a>
         </div>
@@ -53,21 +50,17 @@
                 <div class="modal-body">
                     <form class="form-horizontal form-row-stripped">
                         <fieldset>
-		                    <div class="form-group">
-                                <label class="col-md-3 control-label">編號</label>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">裝置ID</label>
                                 <div class="col-md-8"><div id="col-1"></div></div>
                             </div>
-		                    <div class="form-group">
-                                <label class="col-md-3 control-label">名稱</label>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">壓力(百帕)</label>
                                 <div class="col-md-8"><div id="col-2"></div></div>
                             </div>
-		                    <div class="form-group">
-                                <label class="col-md-3 control-label">項目</label>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">時間</label>
                                 <div class="col-md-8"><div id="col-3"></div></div>
-                            </div>
-		                    <div class="form-group">
-                                <label class="col-md-3 control-label">修改時間</label>
-                                <div class="col-md-8"><div id="col-4"></div></div>
                             </div>
                         </fieldset>
                     </form>
@@ -76,44 +69,43 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
-<div class="panel-body">
-<table id="example" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
-	<thead>
-    <tr>
-        <th>
-            編號
-        </th>
-        <th>
-            名稱
-        </th>
-        <th>
-            項目
-        </th>
-        <th>
-            修改時間
-        </th>
-    </tr>
-	</thead>
-	<tbody>
-@foreach (var row in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => row.Id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => row.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => row.Items) 
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => row.ModifyTime)
-        </td>
-        
-    </tr>
-}
-	</tbody>
+    <div class="panel-body">
+        <table id="example" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>
+                        裝置ID
+                    </th>
+                    <th>
+                        壓力(百帕)
+                    </th>
+                    <th>
+                        時間
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Items.First().devicesId)
+                        </td>
 
-</table>
-</div>
+                        @foreach (var p in item.Items)
+                        {
+                            <td>
+                                @Html.DisplayFor(modelItem => p.attrval)
+                            </td>
+                        }
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Items.First().datetime)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
 </div>

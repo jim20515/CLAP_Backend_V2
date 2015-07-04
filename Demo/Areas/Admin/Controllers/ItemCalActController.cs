@@ -11,22 +11,22 @@ using Demo.Areas.Admin.ViewModels;
 
 namespace Demo.Areas.Admin.Controllers
 {
-    public class ItemAccController : Controller
+    public class ItemCalActController : Controller
     {
         private NCCUEntities db = new NCCUEntities();
         // GET: Admin/ItemAcc
         public ActionResult Index()
         {
-            var item_Acc = db.Item_Acc.Include(i => i.DeviceInfo)
+            var item = db.Item_CalAct.Include(i => i.DeviceInfo)
                 .GroupBy(x => new { x.datetime, x.devicesId })
                 .AsEnumerable()
-                .Select(p => new ItemAccViewModel
+                .Select(p => new ItemCalActViewModel
                 {
                     Key = p.Key.ToString(),
                     Items = p
                 });
 
-            return View(item_Acc.ToList());
+            return View(item.ToList());
         }
 
     }

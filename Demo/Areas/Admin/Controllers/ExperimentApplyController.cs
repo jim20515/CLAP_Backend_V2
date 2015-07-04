@@ -168,7 +168,7 @@ namespace Demo.Areas.Admin.Controllers
                 JObject restoredItem = JsonConvert.DeserializeObject<JObject>(experiment_Apply.TotalItem);
 
                 var items = from p in db.vwExperimentItem.AsEnumerable()
-                            where (bool)restoredItem[p.ItemId.ToString()]
+                            where restoredItem[p.ItemId.ToString()] != null && (bool)restoredItem[p.ItemId.ToString()]
                             select new
                             {
                                 ItemId = p.id,
@@ -181,7 +181,7 @@ namespace Demo.Areas.Admin.Controllers
                 JObject restoredPolicy = JsonConvert.DeserializeObject<JObject>(experiment_Apply.UpdatePolicy);
 
                 var policies = from p in GlobalData.UpdatePolicyList.AsEnumerable()
-                               where (bool)restoredPolicy[p.id.ToString()]
+                               where restoredPolicy[p.id.ToString()] != null & (bool)restoredPolicy[p.id.ToString()]
                                select new UpdatePolicy
                                {
                                    id = p.id,

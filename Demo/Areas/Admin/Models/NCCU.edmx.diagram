@@ -15,6 +15,40 @@
         <AssociationConnector Association="NCCUModel.FK_Item_Acc_DeviceInfo" />
         <AssociationConnector Association="NCCUModel.FK_Item_CalAct_DeviceInfo" />
         <EntityTypeShape EntityType="NCCUModel.vwExperimentItem" Width="1.5" PointX="4.375" PointY="7.75" />
+        <EntityTypeShape EntityType="NCCUModel.Item_Browser" Width="1.5" PointX="7.25" PointY="47.25" />
+        <EntityTypeShape EntityType="NCCUModel.Item_Call" Width="1.5" PointX="7.25" PointY="18.75" />
+        <EntityTypeShape EntityType="NCCUModel.Item_Extmedia" Width="1.5" PointX="7.25" PointY="27.25" />
+        <EntityTypeShape EntityType="NCCUModel.Item_Gps" Width="1.5" PointX="7.25" PointY="21.5" />
+        <EntityTypeShape EntityType="NCCUModel.Item_Gsm" Width="1.5" PointX="7.25" PointY="15.875" />
+        <EntityTypeShape EntityType="NCCUModel.Item_Li" Width="1.5" PointX="7.25" PointY="53" />
+        <EntityTypeShape EntityType="NCCUModel.Item_Locale" Width="1.5" PointX="7.25" PointY="30.125" />
+        <EntityTypeShape EntityType="NCCUModel.Item_Magn" Width="1.5" PointX="7.25" PointY="24.375" />
+        <EntityTypeShape EntityType="NCCUModel.Item_Ori" Width="1.5" PointX="7.25" PointY="38.625" />
+        <EntityTypeShape EntityType="NCCUModel.Item_Pkg" Width="1.5" PointX="7.25" PointY="44.375" />
+        <EntityTypeShape EntityType="NCCUModel.Item_Pow" Width="1.5" PointX="7.25" PointY="13" />
+        <EntityTypeShape EntityType="NCCUModel.Item_Pres" Width="1.5" PointX="7.25" PointY="55.875" />
+        <EntityTypeShape EntityType="NCCUModel.Item_Px" Width="1.5" PointX="7.25" PointY="10.125" />
+        <EntityTypeShape EntityType="NCCUModel.Item_Screen" Width="1.5" PointX="7.25" PointY="33" />
+        <EntityTypeShape EntityType="NCCUModel.Item_Sms" Width="1.5" PointX="7.25" PointY="50.125" />
+        <EntityTypeShape EntityType="NCCUModel.Item_Temp" Width="1.5" PointX="7.25" PointY="41.5" />
+        <EntityTypeShape EntityType="NCCUModel.Item_Wifi" Width="1.5" PointX="7.25" PointY="35.875" />
+        <AssociationConnector Association="NCCUModel.FK_Item_Browser_DeviceInfo" />
+        <AssociationConnector Association="NCCUModel.FK_Item_Call_DeviceInfo" />
+        <AssociationConnector Association="NCCUModel.FK_Item_Extmedia_DeviceInfo" />
+        <AssociationConnector Association="NCCUModel.FK_Item_Gps_DeviceInfo" />
+        <AssociationConnector Association="NCCUModel.FK_Item_Gsm_DeviceInfo" />
+        <AssociationConnector Association="NCCUModel.FK_Item_Li_DeviceInfo" />
+        <AssociationConnector Association="NCCUModel.FK_Item_Locale_DeviceInfo" />
+        <AssociationConnector Association="NCCUModel.FK_Item_Magn_DeviceInfo" />
+        <AssociationConnector Association="NCCUModel.FK_Item_Ori_DeviceInfo" />
+        <AssociationConnector Association="NCCUModel.FK_Item_Pkg_DeviceInfo" />
+        <AssociationConnector Association="NCCUModel.FK_Item_Pow_DeviceInfo" />
+        <AssociationConnector Association="NCCUModel.FK_Item_Pres_DeviceInfo" />
+        <AssociationConnector Association="NCCUModel.FK_Item_Px_DeviceInfo" />
+        <AssociationConnector Association="NCCUModel.FK_Item_Screen_DeviceInfo" />
+        <AssociationConnector Association="NCCUModel.FK_Item_Sms_DeviceInfo" />
+        <AssociationConnector Association="NCCUModel.FK_Item_Temp_DeviceInfo" />
+        <AssociationConnector Association="NCCUModel.FK_Item_Wifi_DeviceInfo" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
