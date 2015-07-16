@@ -55,6 +55,9 @@
       <HintPath>..\packages\ImageResizer.Mvc.3.4.3\lib\ImageResizer.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -326,6 +329,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Utils\GlobalData.cs" />
     <Compile Include="Utils\GlobalFunc.cs" />
+    <Compile Include="Utils\LogFile.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Demo.mdf" />
@@ -804,10 +808,6 @@
     <Content Include="fileman\js\utils.js" />
     <Content Include="fileman\LICENSE.txt" />
     <Content Include="fileman\third-party.txt" />
-    <Content Include="fileman\Uploads\Images\DSC_2987.jpg" />
-    <Content Include="fileman\Uploads\Images\DSC_5744.jpg" />
-    <Content Include="fileman\Uploads\LICENSE.txt" />
-    <Content Include="fileman\Uploads\roxy-fileman-logo.gif" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -945,6 +945,7 @@
     <Content Include="Areas\Admin\Views\ItemSms\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ItemWifi\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ItemTemp\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\NCCU.pubxml" />
     <None Include="Properties\PublishProfiles\test.pubxml" />
     <Content Include="Scripts\DataTables\Chinese-traditional.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -1320,9 +1321,6 @@
     <Folder Include="fileman\tmp\" />
     <Folder Include="fileman\Uploads\Documents\" />
     <Folder Include="fileman\Uploads\FLV\" />
-    <Folder Include="Uploads\Documents\" />
-    <Folder Include="Uploads\Images\" />
-    <Folder Include="Uploads\Media\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

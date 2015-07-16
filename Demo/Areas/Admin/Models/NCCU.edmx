@@ -12,6 +12,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AuthCode" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Computed" />
           <Property Name="CreateTime" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="UUID" Type="nvarchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="Experiment_Apply">
           <Key>
@@ -632,6 +633,7 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
           <NavigationProperty Name="Item_Sms" Relationship="NCCUModel.FK_Item_Sms_DeviceInfo" FromRole="DeviceInfo" ToRole="Item_Sms" />
           <NavigationProperty Name="Item_Temp" Relationship="NCCUModel.FK_Item_Temp_DeviceInfo" FromRole="DeviceInfo" ToRole="Item_Temp" />
           <NavigationProperty Name="Item_Wifi" Relationship="NCCUModel.FK_Item_Wifi_DeviceInfo" FromRole="DeviceInfo" ToRole="Item_Wifi" />
+          <Property Name="UUID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Experiment_Apply">
           <Key>
@@ -1242,6 +1244,7 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
           <EntitySetMapping Name="DeviceInfo">
             <EntityTypeMapping TypeName="NCCUModel.DeviceInfo">
               <MappingFragment StoreEntitySet="DeviceInfo">
+                <ScalarProperty Name="UUID" ColumnName="UUID" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="AuthCode" ColumnName="AuthCode" />
                 <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />

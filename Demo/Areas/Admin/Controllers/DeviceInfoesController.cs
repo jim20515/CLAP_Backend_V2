@@ -15,36 +15,39 @@ using System.Web.Mvc;
 
 namespace Demo.Areas.Admin.Controllers
 {
-    public class DeviceInfoesController : ApiController
+    public class DeviceInfoesController : Controller
     {
         private NCCUEntities db = new NCCUEntities();
 
-        // GET: api/DeviceInfoes
-        //public ActionResult GetDeviceInfo()
-        //{
-        //    return View(db.DeviceInfo.ToList());
-        //}
-
         // POST: api/DeviceInfoes
         [ResponseType(typeof(DeviceInfo))]
-        public IHttpActionResult PostDeviceInfo()
+        public JsonResult PostDeviceInfo(string uuid)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             DeviceInfo deviceInfo = new DeviceInfo();
 
+            var q = from p in db.DeviceInfo
+                    where uuid.Equals(p.UUID)
+                    select p;
+
+            if (q != null && q.Count() >= 1)
+            {
+                return Json(new
+                {
+                    DevicesID = q.First().id,
+                    AuthCode = q.First().AuthCode
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            deviceInfo.UUID = uuid;
             db.DeviceInfo.Add(deviceInfo);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi",
-            new
+            return Json(new
             {
-                id = deviceInfo.id,
+                DevicesID = deviceInfo.id,
                 AuthCode = deviceInfo.AuthCode
-            }, deviceInfo);
+            }, JsonRequestBehavior.AllowGet);
+
         }
 
         protected override void Dispose(bool disposing)

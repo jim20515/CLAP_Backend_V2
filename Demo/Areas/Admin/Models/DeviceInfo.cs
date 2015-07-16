@@ -40,6 +40,7 @@ namespace Demo.Areas.Admin.Models
         public int id { get; set; }
         public System.Guid AuthCode { get; set; }
         public System.DateTime CreateTime { get; set; }
+        public string UUID { get; set; }
     
         public virtual ICollection<Item_Acc> Item_Acc { get; set; }
         public virtual ICollection<Item_CalAct> Item_CalAct { get; set; }

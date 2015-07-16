@@ -147,11 +147,11 @@ namespace Demo.Areas.Admin.Controllers
                 var q = from p in db.Experiment_Apply
                         select new
                         {
-                            id = p.id,
-                            title = p.Title
+                            Id = p.id,
+                            Title = p.Title
                         };
 
-                return Json(q.ToList(), JsonRequestBehavior.AllowGet);
+                return Json(new { Experiment = q.ToList() }, JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -171,7 +171,7 @@ namespace Demo.Areas.Admin.Controllers
                             where restoredItem[p.ItemId.ToString()] != null && (bool)restoredItem[p.ItemId.ToString()]
                             select new
                             {
-                                ItemId = p.id,
+                                ItemId = p.ItemId,
                                 ItemName = p.Name,
                                 AttrId = p.id,
                                 AttrName = p.AttrName,
@@ -181,17 +181,19 @@ namespace Demo.Areas.Admin.Controllers
                 JObject restoredPolicy = JsonConvert.DeserializeObject<JObject>(experiment_Apply.UpdatePolicy);
 
                 var policies = from p in GlobalData.UpdatePolicyList.AsEnumerable()
-                               where restoredPolicy[p.id.ToString()] != null & (bool)restoredPolicy[p.id.ToString()]
+                               where restoredPolicy[p.Id.ToString()] != null & (bool)restoredPolicy[p.Id.ToString()]
                                select new UpdatePolicy
                                {
-                                   id = p.id,
+                                   Id = p.Id,
                                    Name = p.Name
                                };
 
                 var q = Json(new { 
-                    ModifyTime = experiment_Apply.ModifyTime, 
-                    Item = items.ToList(), 
-                    Policy = policies.ToList() 
+                    ExpId = experiment_Apply.id,
+                    ModifyTime = string.Format("{0:yyyy/MM/dd}", experiment_Apply.ModifyTime), 
+                    Description = experiment_Apply.Description,
+                    Items = items.ToList(),
+                    Policies = policies.ToList() 
                 }, JsonRequestBehavior.AllowGet);
 
                 return q;

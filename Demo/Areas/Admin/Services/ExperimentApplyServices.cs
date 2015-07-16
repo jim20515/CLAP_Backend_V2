@@ -45,7 +45,7 @@ namespace Demo.Areas.Admin.Services
             var policies = from p in GlobalData.UpdatePolicyList
                            select new UpdatePolicy
                            {
-                               id = p.id,
+                               Id = p.Id,
                                Name = p.Name
                            };
 
@@ -96,9 +96,9 @@ namespace Demo.Areas.Admin.Services
             var policies = from p in GlobalData.UpdatePolicyList.AsEnumerable()
                            select new UpdatePolicy
                            {
-                               id = p.id,
+                               Id = p.Id,
                                Name = p.Name,
-                               Checked = (bool)restoredPolicy[p.id.ToString()]
+                               Checked = (bool)restoredPolicy[p.Id.ToString()]
                            };
 
             ExperimentApplyRUDViewModel model = new ExperimentApplyRUDViewModel()
@@ -128,7 +128,7 @@ namespace Demo.Areas.Admin.Services
                 JObject policiesJson = new JObject();
                 foreach (var list in experiment_Apply.UpdatePolicyList)
                 {
-                    policiesJson.Add(list.id.ToString(), list.Checked);
+                    policiesJson.Add(list.Id.ToString(), list.Checked);
                 }
 
                 Experiment_Apply exp = new Experiment_Apply()
@@ -171,7 +171,7 @@ namespace Demo.Areas.Admin.Services
                 JObject policiesJson = new JObject();
                 foreach (var list in viewModel.UpdatePolicyList)
                 {
-                    policiesJson.Add(list.id.ToString(), list.Checked);
+                    policiesJson.Add(list.Id.ToString(), list.Checked);
                 }
 
                 experiment_Apply.Title = viewModel.Title;

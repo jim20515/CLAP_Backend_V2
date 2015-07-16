@@ -11,13 +11,13 @@ namespace Demo.Utils
     {
         public class UpdatePolicy
         {
-            public int id { get; set; }
+            public int Id { get; set; }
             public string Name { get; set; }
 
             public UpdatePolicy() { }
             public UpdatePolicy(int id, string name)
             {
-                this.id = id;
+                this.Id = id;
                 this.Name = name;
             }
         }
