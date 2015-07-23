@@ -6,6 +6,12 @@ using Demo.Areas.Admin.Models;
 
 namespace Demo.Areas.Admin.ViewModels
 {
+    public class ItemViewModel
+    {
+        public string Key { get; set; }
+        public IEnumerable<Item_Acc> Items { get; set; }
+    }
+
     public class ItemAccViewModel
     {
         public string Key { get; set; }
@@ -21,12 +27,14 @@ namespace Demo.Areas.Admin.ViewModels
     public class ItemCalActViewModel
     {
         public string Key { get; set; }
+        public string Attributes { get; set; }
         public IEnumerable<Item_CalAct> Items { get; set; }
     }
 
     public class ItemCallViewModel
     {
         public string Key { get; set; }
+        public string Attributes { get; set; }
         public IEnumerable<Item_Call> Items { get; set; }
     }
 
@@ -117,6 +125,7 @@ namespace Demo.Areas.Admin.ViewModels
     public class ItemWifiViewModel
     {
         public string Key { get; set; }
+        public string Attributes { get; set; }
         public IEnumerable<Item_Wifi> Items { get; set; }
     }
 }

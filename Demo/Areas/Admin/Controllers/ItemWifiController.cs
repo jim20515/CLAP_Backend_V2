@@ -23,12 +23,22 @@ namespace Demo.Areas.Admin.Controllers
                 .Select(p => new ItemWifiViewModel
                 {
                     Key = p.Key.ToString(),
+                    Attributes = returnAttrVal(p.First().attr),
                     Items = p
                 });
 
             return View(item.ToList());
         }
 
+        private string returnAttrVal(string attr)
+        {
+            if ("ssid".Equals(attr))
+                return "SSID";
+            else if ("rssi".Equals(attr))
+                return "RSSI";
+
+            return "";
+        }
     }
 
 }

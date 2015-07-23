@@ -81,25 +81,27 @@ namespace Demo.Areas.Admin.Services
                 return null;
             }
 
-            JObject restoredItem = JsonConvert.DeserializeObject<JObject>(experiment_Apply.TotalItem);
-
-            var items = from p in db.Experiment_Item.AsEnumerable()
-                        select new ExperimentItem
-                        {
-                            ItemId = p.id,
-                            Text = p.Name,
-                            Checked = (bool)restoredItem[p.id.ToString()]
-                        };
-
             JObject restoredPolicy = JsonConvert.DeserializeObject<JObject>(experiment_Apply.UpdatePolicy);
 
-            var policies = from p in GlobalData.UpdatePolicyList.AsEnumerable()
+            var policies = from p in GlobalData.UpdatePolicyList
+                           .AsEnumerable()
                            select new UpdatePolicy
                            {
                                Id = p.Id,
                                Name = p.Name,
-                               Checked = (bool)restoredPolicy[p.Id.ToString()]
+                               Checked = restoredPolicy[p.Id.ToString()] != null ? (bool)restoredPolicy[p.Id.ToString()] : false
                            };
+
+            JObject restoredItem = JsonConvert.DeserializeObject<JObject>(experiment_Apply.TotalItem);
+
+            var items = from p in db.Experiment_Item
+                        .AsEnumerable()
+                        select new ExperimentItem
+                        {
+                            ItemId = p.id,
+                            Text = p.Name,
+                            Checked = restoredItem[p.id.ToString()] != null ? (bool)restoredItem[p.id.ToString()] : false
+                        };
 
             ExperimentApplyRUDViewModel model = new ExperimentApplyRUDViewModel()
             {

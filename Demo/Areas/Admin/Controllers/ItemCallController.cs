@@ -23,12 +23,22 @@ namespace Demo.Areas.Admin.Controllers
                 .Select(p => new ItemCallViewModel
                 {
                     Key = p.Key.ToString(),
+                    Attributes = returnAttrVal(p.First().attr),
                     Items = p
                 });
 
             return View(item.ToList());
         }
 
+        private string returnAttrVal(string attr)
+        {
+            if (attr.Contains("out"))
+                return "撥出";
+            else if (attr.Contains("in"))
+                return "撥入";
+
+            return "";
+        }
     }
 
 }
