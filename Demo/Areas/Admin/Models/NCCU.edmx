@@ -851,7 +851,7 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="devicesId" Type="Int32" Nullable="false" />
           <Property Name="attr" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="attrval" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="attrval" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="DeviceInfo" Relationship="NCCUModel.FK_Item_Browser_DeviceInfo" FromRole="Item_Browser" ToRole="DeviceInfo" />
         </EntityType>
