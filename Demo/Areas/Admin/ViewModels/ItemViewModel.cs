@@ -18,10 +18,22 @@ namespace Demo.Areas.Admin.ViewModels
         public IEnumerable<Item_Acc> Items { get; set; }
     }
 
+    public class ItemAppViewModel
+    {
+        public string Key { get; set; }
+        public IEnumerable<Item_App> Items { get; set; }
+    }
+
     public class ItemBrowserViewModel
     {
         public string Key { get; set; }
         public IEnumerable<Item_Browser> Items { get; set; }
+    }
+
+    public class ItemBluetoothViewModel
+    {
+        public string Key { get; set; }
+        public IEnumerable<Item_Bluetooth> Items { get; set; }
     }
 
     public class ItemCalActViewModel
@@ -104,6 +116,12 @@ namespace Demo.Areas.Admin.ViewModels
         public IEnumerable<Item_Px> Items { get; set; }
     }
 
+    public class ItemRingerViewModel
+    {
+        public string Key { get; set; }
+        public IEnumerable<Item_Ringer> Items { get; set; }
+    }
+
     public class ItemScreenViewModel
     {
         public string Key { get; set; }
@@ -120,6 +138,13 @@ namespace Demo.Areas.Admin.ViewModels
     {
         public string Key { get; set; }
         public IEnumerable<Item_Temp> Items { get; set; }
+    }
+
+    public class ItemTrafficViewModel
+    {
+        public string Key { get; set; }
+        public string Attributes { get; set; }
+        public IEnumerable<Item_Traffic> Items { get; set; }
     }
 
     public class ItemWifiViewModel

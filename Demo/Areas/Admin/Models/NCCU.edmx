@@ -54,7 +54,7 @@
           <Property Name="attrval" Type="nvarchar" MaxLength="20" />
           <Property Name="datetime" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
         </EntityType>
-        <EntityType Name="Item_Browser">
+        <EntityType Name="Item_App">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -62,6 +62,26 @@
           <Property Name="devicesId" Type="int" Nullable="false" />
           <Property Name="attr" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="attrval" Type="nvarchar" MaxLength="20" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Item_Bluetooth">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="devicesId" Type="int" Nullable="false" />
+          <Property Name="attr" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="attrval" Type="nvarchar" MaxLength="20" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Item_Browser">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="devicesId" Type="int" Nullable="false" />
+          <Property Name="attr" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="attrval" Type="nvarchar" MaxLength="500" />
           <Property Name="datetime" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Item_CalAct">
@@ -194,6 +214,16 @@
           <Property Name="attrval" Type="nvarchar" MaxLength="20" />
           <Property Name="datetime" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="Item_Ringer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="devicesId" Type="int" Nullable="false" />
+          <Property Name="attr" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="attrval" Type="nvarchar" MaxLength="20" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Item_Screen">
           <Key>
             <PropertyRef Name="id" />
@@ -215,6 +245,16 @@
           <Property Name="datetime" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Item_Temp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="devicesId" Type="int" Nullable="false" />
+          <Property Name="attr" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="attrval" Type="nvarchar" MaxLength="20" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Item_Traffic">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -269,6 +309,30 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Item_Acc">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_App_DeviceInfo">
+          <End Role="DeviceInfo" Type="Self.DeviceInfo" Multiplicity="1" />
+          <End Role="Item_App" Type="Self.Item_App" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_App">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Bluetooth_DeviceInfo">
+          <End Role="DeviceInfo" Type="Self.DeviceInfo" Multiplicity="1" />
+          <End Role="Item_Bluetooth" Type="Self.Item_Bluetooth" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Bluetooth">
               <PropertyRef Name="devicesId" />
             </Dependent>
           </ReferentialConstraint>
@@ -441,6 +505,18 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Item_Ringer_DeviceInfo">
+          <End Role="DeviceInfo" Type="Self.DeviceInfo" Multiplicity="1" />
+          <End Role="Item_Ringer" Type="Self.Item_Ringer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Ringer">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Item_Screen_DeviceInfo">
           <End Role="DeviceInfo" Type="Self.DeviceInfo" Multiplicity="1" />
           <End Role="Item_Screen" Type="Self.Item_Screen" Multiplicity="*" />
@@ -477,6 +553,18 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Item_Traffic_DeviceInfo">
+          <End Role="DeviceInfo" Type="Self.DeviceInfo" Multiplicity="1" />
+          <End Role="Item_Traffic" Type="Self.Item_Traffic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Traffic">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Item_Wifi_DeviceInfo">
           <End Role="DeviceInfo" Type="Self.DeviceInfo" Multiplicity="1" />
           <End Role="Item_Wifi" Type="Self.Item_Wifi" Multiplicity="*" />
@@ -495,6 +583,8 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
           <EntitySet Name="Experiment_Attribute" EntityType="Self.Experiment_Attribute" Schema="dbo" Table="Experiment.Attribute" store:Type="Tables" />
           <EntitySet Name="Experiment_Item" EntityType="Self.Experiment_Item" Schema="dbo" Table="Experiment.Item" store:Type="Tables" />
           <EntitySet Name="Item_Acc" EntityType="Self.Item_Acc" Schema="dbo" Table="Item.Acc" store:Type="Tables" />
+          <EntitySet Name="Item_App" EntityType="Self.Item_App" Schema="dbo" Table="Item.App" store:Type="Tables" />
+          <EntitySet Name="Item_Bluetooth" EntityType="Self.Item_Bluetooth" Schema="dbo" Table="Item.Bluetooth" store:Type="Tables" />
           <EntitySet Name="Item_Browser" EntityType="Self.Item_Browser" Schema="dbo" Table="Item.Browser" store:Type="Tables" />
           <EntitySet Name="Item_CalAct" EntityType="Self.Item_CalAct" Schema="dbo" Table="Item.CalAct" store:Type="Tables" />
           <EntitySet Name="Item_Call" EntityType="Self.Item_Call" Schema="dbo" Table="Item.Call" store:Type="Tables" />
@@ -509,9 +599,11 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
           <EntitySet Name="Item_Pow" EntityType="Self.Item_Pow" Schema="dbo" Table="Item.Pow" store:Type="Tables" />
           <EntitySet Name="Item_Pres" EntityType="Self.Item_Pres" Schema="dbo" Table="Item.Pres" store:Type="Tables" />
           <EntitySet Name="Item_Px" EntityType="Self.Item_Px" Schema="dbo" Table="Item.Px" store:Type="Tables" />
+          <EntitySet Name="Item_Ringer" EntityType="Self.Item_Ringer" Schema="dbo" Table="Item.Ringer" store:Type="Tables" />
           <EntitySet Name="Item_Screen" EntityType="Self.Item_Screen" Schema="dbo" Table="Item.Screen" store:Type="Tables" />
           <EntitySet Name="Item_Sms" EntityType="Self.Item_Sms" Schema="dbo" Table="Item.Sms" store:Type="Tables" />
           <EntitySet Name="Item_Temp" EntityType="Self.Item_Temp" Schema="dbo" Table="Item.Temp" store:Type="Tables" />
+          <EntitySet Name="Item_Traffic" EntityType="Self.Item_Traffic" Schema="dbo" Table="Item.Traffic" store:Type="Tables" />
           <EntitySet Name="Item_Wifi" EntityType="Self.Item_Wifi" Schema="dbo" Table="Item.Wifi" store:Type="Tables" />
           <EntitySet Name="vwExperimentItem" EntityType="Self.vwExperimentItem" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -529,6 +621,14 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
           <AssociationSet Name="FK_Item_Acc_DeviceInfo" Association="Self.FK_Item_Acc_DeviceInfo">
             <End Role="DeviceInfo" EntitySet="DeviceInfo" />
             <End Role="Item_Acc" EntitySet="Item_Acc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_App_DeviceInfo" Association="Self.FK_Item_App_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_App" EntitySet="Item_App" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Bluetooth_DeviceInfo" Association="Self.FK_Item_Bluetooth_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Bluetooth" EntitySet="Item_Bluetooth" />
           </AssociationSet>
           <AssociationSet Name="FK_Item_Browser_DeviceInfo" Association="Self.FK_Item_Browser_DeviceInfo">
             <End Role="DeviceInfo" EntitySet="DeviceInfo" />
@@ -586,6 +686,10 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
             <End Role="DeviceInfo" EntitySet="DeviceInfo" />
             <End Role="Item_Px" EntitySet="Item_Px" />
           </AssociationSet>
+          <AssociationSet Name="FK_Item_Ringer_DeviceInfo" Association="Self.FK_Item_Ringer_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Ringer" EntitySet="Item_Ringer" />
+          </AssociationSet>
           <AssociationSet Name="FK_Item_Screen_DeviceInfo" Association="Self.FK_Item_Screen_DeviceInfo">
             <End Role="DeviceInfo" EntitySet="DeviceInfo" />
             <End Role="Item_Screen" EntitySet="Item_Screen" />
@@ -597,6 +701,10 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
           <AssociationSet Name="FK_Item_Temp_DeviceInfo" Association="Self.FK_Item_Temp_DeviceInfo">
             <End Role="DeviceInfo" EntitySet="DeviceInfo" />
             <End Role="Item_Temp" EntitySet="Item_Temp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Traffic_DeviceInfo" Association="Self.FK_Item_Traffic_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Traffic" EntitySet="Item_Traffic" />
           </AssociationSet>
           <AssociationSet Name="FK_Item_Wifi_DeviceInfo" Association="Self.FK_Item_Wifi_DeviceInfo">
             <End Role="DeviceInfo" EntitySet="DeviceInfo" />
@@ -634,6 +742,10 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
           <NavigationProperty Name="Item_Temp" Relationship="NCCUModel.FK_Item_Temp_DeviceInfo" FromRole="DeviceInfo" ToRole="Item_Temp" />
           <NavigationProperty Name="Item_Wifi" Relationship="NCCUModel.FK_Item_Wifi_DeviceInfo" FromRole="DeviceInfo" ToRole="Item_Wifi" />
           <Property Name="UUID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Item_Ringer" Relationship="NCCUModel.FK_Item_Ringer_DeviceInfo" FromRole="DeviceInfo" ToRole="Item_Ringer" />
+          <NavigationProperty Name="Item_App" Relationship="NCCUModel.FK_Item_App_DeviceInfo" FromRole="DeviceInfo" ToRole="Item_App" />
+          <NavigationProperty Name="Item_Bluetooth" Relationship="NCCUModel.FK_Item_Bluetooth_DeviceInfo" FromRole="DeviceInfo" ToRole="Item_Bluetooth" />
+          <NavigationProperty Name="Item_Traffic" Relationship="NCCUModel.FK_Item_Traffic_DeviceInfo" FromRole="DeviceInfo" ToRole="Item_Traffic" />
         </EntityType>
         <EntityType Name="Experiment_Apply">
           <Key>
@@ -806,6 +918,26 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
             <End Role="DeviceInfo" EntitySet="DeviceInfo" />
             <End Role="Item_Wifi" EntitySet="Item_Wifi" />
           </AssociationSet>
+          <EntitySet Name="Item_Ringer" EntityType="NCCUModel.Item_Ringer" />
+          <AssociationSet Name="FK_Item_Ringer_DeviceInfo" Association="NCCUModel.FK_Item_Ringer_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Ringer" EntitySet="Item_Ringer" />
+          </AssociationSet>
+          <EntitySet Name="Item_App" EntityType="NCCUModel.Item_App" />
+          <EntitySet Name="Item_Bluetooth" EntityType="NCCUModel.Item_Bluetooth" />
+          <EntitySet Name="Item_Traffic" EntityType="NCCUModel.Item_Traffic" />
+          <AssociationSet Name="FK_Item_App_DeviceInfo" Association="NCCUModel.FK_Item_App_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_App" EntitySet="Item_App" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Bluetooth_DeviceInfo" Association="NCCUModel.FK_Item_Bluetooth_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Bluetooth" EntitySet="Item_Bluetooth" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Traffic_DeviceInfo" Association="NCCUModel.FK_Item_Traffic_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Traffic" EntitySet="Item_Traffic" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="FK_Item_Acc_DeviceInfo">
           <End Type="NCCUModel.DeviceInfo" Role="DeviceInfo" Multiplicity="1" />
@@ -851,7 +983,7 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="devicesId" Type="Int32" Nullable="false" />
           <Property Name="attr" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="attrval" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="attrval" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="DeviceInfo" Relationship="NCCUModel.FK_Item_Browser_DeviceInfo" FromRole="Item_Browser" ToRole="DeviceInfo" />
         </EntityType>
@@ -1235,6 +1367,98 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Item_Ringer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="devicesId" Type="Int32" Nullable="false" />
+          <Property Name="attr" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="attrval" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DeviceInfo" Relationship="NCCUModel.FK_Item_Ringer_DeviceInfo" FromRole="Item_Ringer" ToRole="DeviceInfo" />
+        </EntityType>
+        <Association Name="FK_Item_Ringer_DeviceInfo">
+          <End Type="NCCUModel.DeviceInfo" Role="DeviceInfo" Multiplicity="1" />
+          <End Type="NCCUModel.Item_Ringer" Role="Item_Ringer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Ringer">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Item_App">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="devicesId" Type="Int32" Nullable="false" />
+          <Property Name="attr" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="attrval" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DeviceInfo" Relationship="NCCUModel.FK_Item_App_DeviceInfo" FromRole="Item_App" ToRole="DeviceInfo" />
+        </EntityType>
+        <EntityType Name="Item_Bluetooth">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="devicesId" Type="Int32" Nullable="false" />
+          <Property Name="attr" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="attrval" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DeviceInfo" Relationship="NCCUModel.FK_Item_Bluetooth_DeviceInfo" FromRole="Item_Bluetooth" ToRole="DeviceInfo" />
+        </EntityType>
+        <EntityType Name="Item_Traffic">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="devicesId" Type="Int32" Nullable="false" />
+          <Property Name="attr" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="attrval" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DeviceInfo" Relationship="NCCUModel.FK_Item_Traffic_DeviceInfo" FromRole="Item_Traffic" ToRole="DeviceInfo" />
+        </EntityType>
+        <Association Name="FK_Item_App_DeviceInfo">
+          <End Type="NCCUModel.DeviceInfo" Role="DeviceInfo" Multiplicity="1" />
+          <End Type="NCCUModel.Item_App" Role="Item_App" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_App">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Bluetooth_DeviceInfo">
+          <End Type="NCCUModel.DeviceInfo" Role="DeviceInfo" Multiplicity="1" />
+          <End Type="NCCUModel.Item_Bluetooth" Role="Item_Bluetooth" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Bluetooth">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Traffic_DeviceInfo">
+          <End Type="NCCUModel.DeviceInfo" Role="DeviceInfo" Multiplicity="1" />
+          <End Type="NCCUModel.Item_Traffic" Role="Item_Traffic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Traffic">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1496,6 +1720,50 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
           <EntitySetMapping Name="Item_Wifi">
             <EntityTypeMapping TypeName="NCCUModel.Item_Wifi">
               <MappingFragment StoreEntitySet="Item_Wifi">
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="attrval" ColumnName="attrval" />
+                <ScalarProperty Name="attr" ColumnName="attr" />
+                <ScalarProperty Name="devicesId" ColumnName="devicesId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item_Ringer">
+            <EntityTypeMapping TypeName="NCCUModel.Item_Ringer">
+              <MappingFragment StoreEntitySet="Item_Ringer">
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="attrval" ColumnName="attrval" />
+                <ScalarProperty Name="attr" ColumnName="attr" />
+                <ScalarProperty Name="devicesId" ColumnName="devicesId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item_App">
+            <EntityTypeMapping TypeName="NCCUModel.Item_App">
+              <MappingFragment StoreEntitySet="Item_App">
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="attrval" ColumnName="attrval" />
+                <ScalarProperty Name="attr" ColumnName="attr" />
+                <ScalarProperty Name="devicesId" ColumnName="devicesId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item_Bluetooth">
+            <EntityTypeMapping TypeName="NCCUModel.Item_Bluetooth">
+              <MappingFragment StoreEntitySet="Item_Bluetooth">
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="attrval" ColumnName="attrval" />
+                <ScalarProperty Name="attr" ColumnName="attr" />
+                <ScalarProperty Name="devicesId" ColumnName="devicesId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item_Traffic">
+            <EntityTypeMapping TypeName="NCCUModel.Item_Traffic">
+              <MappingFragment StoreEntitySet="Item_Traffic">
                 <ScalarProperty Name="datetime" ColumnName="datetime" />
                 <ScalarProperty Name="attrval" ColumnName="attrval" />
                 <ScalarProperty Name="attr" ColumnName="attr" />

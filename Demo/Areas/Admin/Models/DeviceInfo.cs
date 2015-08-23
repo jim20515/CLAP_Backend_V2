@@ -35,6 +35,10 @@ namespace Demo.Areas.Admin.Models
             this.Item_Sms = new HashSet<Item_Sms>();
             this.Item_Temp = new HashSet<Item_Temp>();
             this.Item_Wifi = new HashSet<Item_Wifi>();
+            this.Item_Ringer = new HashSet<Item_Ringer>();
+            this.Item_App = new HashSet<Item_App>();
+            this.Item_Bluetooth = new HashSet<Item_Bluetooth>();
+            this.Item_Traffic = new HashSet<Item_Traffic>();
         }
     
         public int id { get; set; }
@@ -61,5 +65,9 @@ namespace Demo.Areas.Admin.Models
         public virtual ICollection<Item_Sms> Item_Sms { get; set; }
         public virtual ICollection<Item_Temp> Item_Temp { get; set; }
         public virtual ICollection<Item_Wifi> Item_Wifi { get; set; }
+        public virtual ICollection<Item_Ringer> Item_Ringer { get; set; }
+        public virtual ICollection<Item_App> Item_App { get; set; }
+        public virtual ICollection<Item_Bluetooth> Item_Bluetooth { get; set; }
+        public virtual ICollection<Item_Traffic> Item_Traffic { get; set; }
     }
 }

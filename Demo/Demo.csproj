@@ -210,6 +210,10 @@
     <Compile Include="Areas\Admin\Controllers\ItemPowController.cs" />
     <Compile Include="Areas\Admin\Controllers\ItemPresController.cs" />
     <Compile Include="Areas\Admin\Controllers\ItemPxController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ItemAppController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ItemBluetoothController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ItemTrafficController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ItemRingerController.cs" />
     <Compile Include="Areas\Admin\Controllers\ItemScreenController.cs" />
     <Compile Include="Areas\Admin\Controllers\ItemSmsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ItemTempController.cs" />
@@ -231,6 +235,12 @@
       <DependentUpon>NCCU.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\Item_Acc.cs">
+      <DependentUpon>NCCU.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Item_App.cs">
+      <DependentUpon>NCCU.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Item_Bluetooth.cs">
       <DependentUpon>NCCU.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\Item_Browser.cs">
@@ -275,6 +285,9 @@
     <Compile Include="Areas\Admin\Models\Item_Px.cs">
       <DependentUpon>NCCU.tt</DependentUpon>
     </Compile>
+    <Compile Include="Areas\Admin\Models\Item_Ringer.cs">
+      <DependentUpon>NCCU.tt</DependentUpon>
+    </Compile>
     <Compile Include="Areas\Admin\Models\Item_Screen.cs">
       <DependentUpon>NCCU.tt</DependentUpon>
     </Compile>
@@ -282,6 +295,9 @@
       <DependentUpon>NCCU.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\Item_Temp.cs">
+      <DependentUpon>NCCU.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Item_Traffic.cs">
       <DependentUpon>NCCU.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\Item_Wifi.cs">
@@ -945,6 +961,10 @@
     <Content Include="Areas\Admin\Views\ItemSms\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ItemWifi\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ItemTemp\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ItemRinger\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ItemApp\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ItemTraffic\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ItemBluetooth\Index.cshtml" />
     <None Include="Properties\PublishProfiles\NCCU.pubxml" />
     <None Include="Properties\PublishProfiles\test.pubxml" />
     <Content Include="Scripts\DataTables\Chinese-traditional.json" />

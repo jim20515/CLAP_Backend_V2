@@ -49,6 +49,14 @@
         <AssociationConnector Association="NCCUModel.FK_Item_Sms_DeviceInfo" />
         <AssociationConnector Association="NCCUModel.FK_Item_Temp_DeviceInfo" />
         <AssociationConnector Association="NCCUModel.FK_Item_Wifi_DeviceInfo" />
+        <EntityTypeShape EntityType="NCCUModel.Item_Ringer" Width="1.5" PointX="7.25" PointY="59.375" />
+        <AssociationConnector Association="NCCUModel.FK_Item_Ringer_DeviceInfo" />
+        <EntityTypeShape EntityType="NCCUModel.Item_App" Width="1.5" PointX="7.25" PointY="62.875" />
+        <EntityTypeShape EntityType="NCCUModel.Item_Bluetooth" Width="1.5" PointX="7.25" PointY="68.5" />
+        <EntityTypeShape EntityType="NCCUModel.Item_Traffic" Width="1.5" PointX="7.25" PointY="65.75" />
+        <AssociationConnector Association="NCCUModel.FK_Item_App_DeviceInfo" />
+        <AssociationConnector Association="NCCUModel.FK_Item_Bluetooth_DeviceInfo" />
+        <AssociationConnector Association="NCCUModel.FK_Item_Traffic_DeviceInfo" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

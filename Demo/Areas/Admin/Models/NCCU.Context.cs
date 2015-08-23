@@ -49,5 +49,9 @@ namespace Demo.Areas.Admin.Models
         public virtual DbSet<Item_Sms> Item_Sms { get; set; }
         public virtual DbSet<Item_Temp> Item_Temp { get; set; }
         public virtual DbSet<Item_Wifi> Item_Wifi { get; set; }
+        public virtual DbSet<Item_Ringer> Item_Ringer { get; set; }
+        public virtual DbSet<Item_App> Item_App { get; set; }
+        public virtual DbSet<Item_Bluetooth> Item_Bluetooth { get; set; }
+        public virtual DbSet<Item_Traffic> Item_Traffic { get; set; }
     }
 }
