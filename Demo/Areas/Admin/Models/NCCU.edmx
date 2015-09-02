@@ -174,6 +174,16 @@
           <Property Name="attrval" Type="nvarchar" MaxLength="20" />
           <Property Name="datetime" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="Item_Photo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="devicesId" Type="int" Nullable="false" />
+          <Property Name="attr" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="attrval" Type="nvarchar" MaxLength="20" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Item_Pkg">
           <Key>
             <PropertyRef Name="id" />
@@ -457,6 +467,18 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Item_Photo_DeviceInfo">
+          <End Role="DeviceInfo" Type="Self.DeviceInfo" Multiplicity="1" />
+          <End Role="Item_Photo" Type="Self.Item_Photo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Photo">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Item_Pkg_DeviceInfo">
           <End Role="DeviceInfo" Type="Self.DeviceInfo" Multiplicity="1" />
           <End Role="Item_Pkg" Type="Self.Item_Pkg" Multiplicity="*" />
@@ -595,6 +617,7 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
           <EntitySet Name="Item_Locale" EntityType="Self.Item_Locale" Schema="dbo" Table="Item.Locale" store:Type="Tables" />
           <EntitySet Name="Item_Magn" EntityType="Self.Item_Magn" Schema="dbo" Table="Item.Magn" store:Type="Tables" />
           <EntitySet Name="Item_Ori" EntityType="Self.Item_Ori" Schema="dbo" Table="Item.Ori" store:Type="Tables" />
+          <EntitySet Name="Item_Photo" EntityType="Self.Item_Photo" Schema="dbo" Table="Item.Photo" store:Type="Tables" />
           <EntitySet Name="Item_Pkg" EntityType="Self.Item_Pkg" Schema="dbo" Table="Item.Pkg" store:Type="Tables" />
           <EntitySet Name="Item_Pow" EntityType="Self.Item_Pow" Schema="dbo" Table="Item.Pow" store:Type="Tables" />
           <EntitySet Name="Item_Pres" EntityType="Self.Item_Pres" Schema="dbo" Table="Item.Pres" store:Type="Tables" />
@@ -669,6 +692,10 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
           <AssociationSet Name="FK_Item_Ori_DeviceInfo" Association="Self.FK_Item_Ori_DeviceInfo">
             <End Role="DeviceInfo" EntitySet="DeviceInfo" />
             <End Role="Item_Ori" EntitySet="Item_Ori" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Photo_DeviceInfo" Association="Self.FK_Item_Photo_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Photo" EntitySet="Item_Photo" />
           </AssociationSet>
           <AssociationSet Name="FK_Item_Pkg_DeviceInfo" Association="Self.FK_Item_Pkg_DeviceInfo">
             <End Role="DeviceInfo" EntitySet="DeviceInfo" />
@@ -746,6 +773,7 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
           <NavigationProperty Name="Item_App" Relationship="NCCUModel.FK_Item_App_DeviceInfo" FromRole="DeviceInfo" ToRole="Item_App" />
           <NavigationProperty Name="Item_Bluetooth" Relationship="NCCUModel.FK_Item_Bluetooth_DeviceInfo" FromRole="DeviceInfo" ToRole="Item_Bluetooth" />
           <NavigationProperty Name="Item_Traffic" Relationship="NCCUModel.FK_Item_Traffic_DeviceInfo" FromRole="DeviceInfo" ToRole="Item_Traffic" />
+          <NavigationProperty Name="Item_Photo" Relationship="NCCUModel.FK_Item_Photo_DeviceInfo" FromRole="DeviceInfo" ToRole="Item_Photo" />
         </EntityType>
         <EntityType Name="Experiment_Apply">
           <Key>
@@ -937,6 +965,11 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
           <AssociationSet Name="FK_Item_Traffic_DeviceInfo" Association="NCCUModel.FK_Item_Traffic_DeviceInfo">
             <End Role="DeviceInfo" EntitySet="DeviceInfo" />
             <End Role="Item_Traffic" EntitySet="Item_Traffic" />
+          </AssociationSet>
+          <EntitySet Name="Item_Photo" EntityType="NCCUModel.Item_Photo" />
+          <AssociationSet Name="FK_Item_Photo_DeviceInfo" Association="NCCUModel.FK_Item_Photo_DeviceInfo">
+            <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+            <End Role="Item_Photo" EntitySet="Item_Photo" />
           </AssociationSet>
         </EntityContainer>
         <Association Name="FK_Item_Acc_DeviceInfo">
@@ -1459,6 +1492,29 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Item_Photo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="devicesId" Type="Int32" Nullable="false" />
+          <Property Name="attr" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="attrval" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DeviceInfo" Relationship="NCCUModel.FK_Item_Photo_DeviceInfo" FromRole="Item_Photo" ToRole="DeviceInfo" />
+        </EntityType>
+        <Association Name="FK_Item_Photo_DeviceInfo">
+          <End Type="NCCUModel.DeviceInfo" Role="DeviceInfo" Multiplicity="1" />
+          <End Type="NCCUModel.Item_Photo" Role="Item_Photo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Item_Photo">
+              <PropertyRef Name="devicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1764,6 +1820,17 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
           <EntitySetMapping Name="Item_Traffic">
             <EntityTypeMapping TypeName="NCCUModel.Item_Traffic">
               <MappingFragment StoreEntitySet="Item_Traffic">
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="attrval" ColumnName="attrval" />
+                <ScalarProperty Name="attr" ColumnName="attr" />
+                <ScalarProperty Name="devicesId" ColumnName="devicesId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item_Photo">
+            <EntityTypeMapping TypeName="NCCUModel.Item_Photo">
+              <MappingFragment StoreEntitySet="Item_Photo">
                 <ScalarProperty Name="datetime" ColumnName="datetime" />
                 <ScalarProperty Name="attrval" ColumnName="attrval" />
                 <ScalarProperty Name="attr" ColumnName="attr" />

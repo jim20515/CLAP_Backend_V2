@@ -39,6 +39,7 @@ namespace Demo.Areas.Admin.Models
             this.Item_App = new HashSet<Item_App>();
             this.Item_Bluetooth = new HashSet<Item_Bluetooth>();
             this.Item_Traffic = new HashSet<Item_Traffic>();
+            this.Item_Photo = new HashSet<Item_Photo>();
         }
     
         public int id { get; set; }
@@ -69,5 +70,6 @@ namespace Demo.Areas.Admin.Models
         public virtual ICollection<Item_App> Item_App { get; set; }
         public virtual ICollection<Item_Bluetooth> Item_Bluetooth { get; set; }
         public virtual ICollection<Item_Traffic> Item_Traffic { get; set; }
+        public virtual ICollection<Item_Photo> Item_Photo { get; set; }
     }
 }

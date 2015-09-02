@@ -57,6 +57,8 @@
         <AssociationConnector Association="NCCUModel.FK_Item_App_DeviceInfo" />
         <AssociationConnector Association="NCCUModel.FK_Item_Bluetooth_DeviceInfo" />
         <AssociationConnector Association="NCCUModel.FK_Item_Traffic_DeviceInfo" />
+        <EntityTypeShape EntityType="NCCUModel.Item_Photo" Width="1.5" PointX="7.25" PointY="71.75" />
+        <AssociationConnector Association="NCCUModel.FK_Item_Photo_DeviceInfo" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

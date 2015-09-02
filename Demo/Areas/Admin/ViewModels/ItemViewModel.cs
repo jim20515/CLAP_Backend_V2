@@ -92,6 +92,12 @@ namespace Demo.Areas.Admin.ViewModels
         public IEnumerable<Item_Ori> Items { get; set; }
     }
 
+    public class ItemPhotoViewModel
+    {
+        public string Key { get; set; }
+        public IEnumerable<Item_Photo> Items { get; set; }
+    }
+
     public class ItemPkgViewModel
     {
         public string Key { get; set; }

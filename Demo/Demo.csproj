@@ -197,6 +197,7 @@
     <Compile Include="Areas\Admin\Controllers\DeviceInfoesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ExperimentApplyController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ItemPhotoController.cs" />
     <Compile Include="Areas\Admin\Controllers\ItemCalActController.cs" />
     <Compile Include="Areas\Admin\Controllers\ItemCallController.cs" />
     <Compile Include="Areas\Admin\Controllers\ItemExtmediaController.cs" />
@@ -271,6 +272,9 @@
       <DependentUpon>NCCU.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\Item_Ori.cs">
+      <DependentUpon>NCCU.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\Item_Photo.cs">
       <DependentUpon>NCCU.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\Item_Pkg.cs">
@@ -965,6 +969,7 @@
     <Content Include="Areas\Admin\Views\ItemApp\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ItemTraffic\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ItemBluetooth\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ItemPhoto\Index.cshtml" />
     <None Include="Properties\PublishProfiles\NCCU.pubxml" />
     <None Include="Properties\PublishProfiles\test.pubxml" />
     <Content Include="Scripts\DataTables\Chinese-traditional.json" />

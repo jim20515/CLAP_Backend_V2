@@ -53,5 +53,6 @@ namespace Demo.Areas.Admin.Models
         public virtual DbSet<Item_App> Item_App { get; set; }
         public virtual DbSet<Item_Bluetooth> Item_Bluetooth { get; set; }
         public virtual DbSet<Item_Traffic> Item_Traffic { get; set; }
+        public virtual DbSet<Item_Photo> Item_Photo { get; set; }
     }
 }
