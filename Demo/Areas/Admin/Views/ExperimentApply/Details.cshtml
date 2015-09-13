@@ -50,25 +50,30 @@
 
     <div class="form-group">
         @Html.LabelFor(model => model.ExperItemList, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-4">
+        <div class="col-md-10">
             <div class="square">
                 @for (int i = 0; i < Model.ExperItemList.Count; i++)
                 {
-                    @Html.CheckBoxFor(m => m.ExperItemList[i].Checked, new { @disabled = "disabled" })
-                    @Html.DisplayFor(m => m.ExperItemList[i].Text)
+                    <div class="col-md-4">
+                        @Html.CheckBoxFor(m => m.ExperItemList[i].Checked, new { @disabled = "disabled" })
+                        @Html.DisplayFor(m => m.ExperItemList[i].Text)
+                    </div>
                 }
+                    
             </div>
         </div>
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.UpdatePolicyList, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-4">
+        <div class="col-md-10">
             <div class="square">
                 @for (int i = 0; i < Model.UpdatePolicyList.Count; i++)
                 {
-                    @Html.CheckBoxFor(m => m.UpdatePolicyList[i].Checked, new { @disabled = "disabled" })
-                    @Html.DisplayFor(m => m.UpdatePolicyList[i].Name)
+                    <div class="col-md-4">
+                        @Html.CheckBoxFor(m => m.UpdatePolicyList[i].Checked, new { @disabled = "disabled" })
+                        @Html.DisplayFor(m => m.UpdatePolicyList[i].Name)
+                    </div>
                 }
             </div>
         </div>
