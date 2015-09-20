@@ -145,10 +145,13 @@ namespace Demo.Areas.Admin.Controllers
             using (NCCUEntities db = new NCCUEntities())
             {
                 var q = from p in db.Experiment_Apply
+                        .AsEnumerable()
                         select new
                         {
                             Id = p.id,
-                            Title = p.Title
+                            Title = p.Title,
+                            Description = p.Description,
+                            Detail = GetExperimentDetail(p.id)
                         };
 
                 return Json(new { Experiment = q.ToList() }, JsonRequestBehavior.AllowGet);
@@ -189,9 +192,9 @@ namespace Demo.Areas.Admin.Controllers
                                };
 
                 var q = Json(new { 
-                    ExpId = experiment_Apply.id,
+                    //ExpId = experiment_Apply.id,
                     ModifyTime = string.Format("{0:yyyy/MM/dd}", experiment_Apply.ModifyTime), 
-                    Description = experiment_Apply.Description,
+                    //Description = experiment_Apply.Description,
                     Items = items.ToList(),
                     Policies = policies.ToList() 
                 }, JsonRequestBehavior.AllowGet);
