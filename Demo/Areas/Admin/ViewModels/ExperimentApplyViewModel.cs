@@ -7,6 +7,7 @@ using System.Web;
 using Demo.Utils;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Demo.Areas.Admin.Models;
 
 namespace Demo.Areas.Admin.ViewModels
 {
@@ -14,7 +15,14 @@ namespace Demo.Areas.Admin.ViewModels
     {
         public string Text { get; set; }
         public int ItemId { get; set; }
+        public bool HasRecordSecond { get; set; }
         public bool Checked { get; set; }
+    }
+
+    public class ItemInterval
+    {
+        public int ItemId { get; set; }
+        public int Interval { get; set; }
     }
 
     public class UpdatePolicy : GlobalData.UpdatePolicy
@@ -34,12 +42,15 @@ namespace Demo.Areas.Admin.ViewModels
         public string Title { get; set; }
 
         [Required]
-        [DisplayName("上傳原則")]
+        [DisplayName("實驗列表")]
         public List<ExperimentItem> ExperItemList { get; set; }
 
         [Required]
-        [DisplayName("實驗項目")]
+        [DisplayName("上傳原則")]
         public List<UpdatePolicy> UpdatePolicyList { get; set; }
+
+        [DisplayName("紀錄間隔")]
+        public List<ItemInterval> ItemIntervalList { get; set; }
     }
 
     public class ExperimentApplyRUDViewModel : ExperimentApplyBaseViewModel

@@ -21,5 +21,6 @@ namespace Demo.Areas.Admin.Models
         public System.DateTime CreateTime { get; set; }
         public string Title { get; set; }
         public System.DateTime ModifyTime { get; set; }
+        public string ItemInterval { get; set; }
     }
 }

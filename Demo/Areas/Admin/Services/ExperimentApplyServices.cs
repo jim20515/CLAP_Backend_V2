@@ -39,20 +39,39 @@ namespace Demo.Areas.Admin.Services
                         select new ExperimentItem
                         {
                             ItemId = p.id,
-                            Text = p.Name
+                            HasRecordSecond = p.HasRecordInterval,
+                            Text = p.Description
                         };
 
             var policies = from p in GlobalData.UpdatePolicyList
                            select new UpdatePolicy
                            {
                                Id = p.Id,
-                               Name = p.Name
+                               Name = p.Name,
+                               Checked = p.Id == 1
                            };
+
+            //var applySecondList = from p in items
+            //                      .AsEnumerable()
+            //                      where p.HasRecordSecond == true
+            //                      select new Experiment_ApplySecond 
+            //                      {
+            //                         ItemId = p.ItemId
+            //                      };
+
+            var intervalList = from p in items
+                               .AsEnumerable()
+                               where p.HasRecordSecond
+                               select new ItemInterval
+                               {
+                                   ItemId = p.ItemId
+                               };
 
             ExperimentApplyAddViewModel model = new ExperimentApplyAddViewModel()
             {
                 ExperItemList = items.ToList(),
-                UpdatePolicyList = policies.ToList()
+                UpdatePolicyList = policies.ToList(),
+                ItemIntervalList = intervalList.ToList()
             };
 
             return model;
@@ -76,12 +95,12 @@ namespace Demo.Areas.Admin.Services
         public ExperimentApplyRUDViewModel GetRUDViewModel(int id)
         {
             Experiment_Apply experiment_Apply = db.Experiment_Apply.Find(id);
+            //var allApplySecondList = db.Experiment_ApplySecond.Where(x => x.ApplyId == id).AsEnumerable();
+
             if (experiment_Apply == null)
             {
                 return null;
             }
-
-            JObject restoredPolicy = JsonConvert.DeserializeObject<JObject>(experiment_Apply.UpdatePolicy);
 
             var policies = from p in GlobalData.UpdatePolicyList
                            .AsEnumerable()
@@ -89,7 +108,7 @@ namespace Demo.Areas.Admin.Services
                            {
                                Id = p.Id,
                                Name = p.Name,
-                               Checked = restoredPolicy[p.Id.ToString()] != null ? (bool)restoredPolicy[p.Id.ToString()] : false
+                               Checked = restoredPolicy(experiment_Apply.UpdatePolicy, p.Id)
                            };
 
             JObject restoredItem = JsonConvert.DeserializeObject<JObject>(experiment_Apply.TotalItem);
@@ -99,9 +118,31 @@ namespace Demo.Areas.Admin.Services
                         select new ExperimentItem
                         {
                             ItemId = p.id,
-                            Text = p.Name,
+                            Text = p.Description,
+                            HasRecordSecond = p.HasRecordInterval,
                             Checked = restoredItem[p.id.ToString()] != null ? (bool)restoredItem[p.id.ToString()] : false
                         };
+
+            JObject restoredInterval;
+
+            if (experiment_Apply.ItemInterval == null)
+                restoredInterval = new JObject();
+            else
+                restoredInterval = JsonConvert.DeserializeObject<JObject>(experiment_Apply.ItemInterval);
+
+            var intervalList = from p in items
+                                .AsEnumerable()
+                               where p.HasRecordSecond == true
+                               select new ItemInterval
+                               {
+                                   ItemId = p.ItemId,
+                                   Interval = restoredInterval[p.ItemId.ToString()] != null ? (int)restoredInterval[p.ItemId.ToString()] : 0
+                               };
+
+            //var applySecond = from p in db.Experiment_ApplySecond
+            //                  .AsEnumerable()
+            //                  where p.ApplyId == id
+            //                  select p;
 
             ExperimentApplyRUDViewModel model = new ExperimentApplyRUDViewModel()
             {
@@ -111,7 +152,8 @@ namespace Demo.Areas.Admin.Services
                 CreateTime = string.Format("{0:yyyy/MM/dd HH:mm:ss}", experiment_Apply.CreateTime),
                 ModifyTime = string.Format("{0:yyyy/MM/dd HH:mm:ss}", experiment_Apply.ModifyTime),
                 ExperItemList = items.ToList(),
-                UpdatePolicyList = policies.ToList()
+                UpdatePolicyList = policies.ToList(),
+                ItemIntervalList = intervalList.ToList()
             };
 
             return model;
@@ -133,11 +175,19 @@ namespace Demo.Areas.Admin.Services
                     policiesJson.Add(list.Id.ToString(), list.Checked);
                 }
 
+                JObject IntervalJson = new JObject();
+                foreach (var list in experiment_Apply.ItemIntervalList)
+                {
+                    if(list.Interval > 0)
+                        IntervalJson.Add(list.ItemId.ToString(), list.Interval);
+                }
+
                 Experiment_Apply exp = new Experiment_Apply()
                 {
                     Title = experiment_Apply.Title,
                     Description = experiment_Apply.Description,
                     TotalItem = itemsJson.ToString(),
+                    ItemInterval = IntervalJson.ToString(),
                     UpdatePolicy = policiesJson.ToString(),
                     ModifyTime = System.DateTime.Now
                 };
@@ -145,9 +195,21 @@ namespace Demo.Areas.Admin.Services
                 db.Experiment_Apply.Add(exp);
                 db.SaveChanges();
 
+                //var insertApplySecondList = from p in experiment_Apply.ApplySecondList
+                //                            where p.Second > 0
+                //                            select new Experiment_ApplySecond
+                //                            {
+                //                                ApplyId = exp.id,
+                //                                ItemId = p.ItemId,
+                //                                Second = p.Second
+                //                            };
+
+                //db.Experiment_ApplySecond.AddRange(insertApplySecondList);
+                db.SaveChanges();
+
                 return true;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return false;
             }
@@ -159,6 +221,7 @@ namespace Demo.Areas.Admin.Services
             try
             {
                 Experiment_Apply experiment_Apply = db.Experiment_Apply.Find(viewModel.id);
+
                 if (experiment_Apply == null)
                 {
                     return false;
@@ -176,13 +239,23 @@ namespace Demo.Areas.Admin.Services
                     policiesJson.Add(list.Id.ToString(), list.Checked);
                 }
 
+                JObject intervalJson = new JObject();
+                foreach (var list in viewModel.ItemIntervalList)
+                {
+                    if(list.Interval > 0)
+                        intervalJson.Add(list.ItemId.ToString(), list.Interval);
+                }
+
                 experiment_Apply.Title = viewModel.Title;
                 experiment_Apply.Description = viewModel.Description;
                 experiment_Apply.TotalItem = itemsJson.ToString();
                 experiment_Apply.UpdatePolicy = policiesJson.ToString();
+                experiment_Apply.ItemInterval = intervalJson.ToString();
                 experiment_Apply.ModifyTime = System.DateTime.Now;
 
                 db.Entry(experiment_Apply).State = EntityState.Modified;
+
+                //db.Entry(viewModel.ApplySecondList.Where(x => x.Second > 0)).State = EntityState.Modified;
                 db.SaveChanges();
 
                 return true;
@@ -200,6 +273,7 @@ namespace Demo.Areas.Admin.Services
             {
                 Experiment_Apply experiment_Apply = db.Experiment_Apply.Find(id);
                 db.Experiment_Apply.Remove(experiment_Apply);
+
                 db.SaveChanges();
 
                 return true;
@@ -234,6 +308,16 @@ namespace Demo.Areas.Admin.Services
             }
 
             return returnValue;
+        }
+
+        public bool restoredPolicy(string updatePolicy, int id)
+        {
+            if (id == 1)
+                return true;
+
+            JObject restoredPolicy = JsonConvert.DeserializeObject<JObject>(updatePolicy);
+
+            return restoredPolicy[id.ToString()] != null ? (bool)restoredPolicy[id.ToString()] : false;
         }
     }
 }

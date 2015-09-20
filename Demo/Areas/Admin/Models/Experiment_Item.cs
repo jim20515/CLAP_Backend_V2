@@ -22,6 +22,8 @@ namespace Demo.Areas.Admin.Models
         public int id { get; set; }
         public string Name { get; set; }
         public System.DateTime CreateTime { get; set; }
+        public string Description { get; set; }
+        public bool HasRecordInterval { get; set; }
     
         public virtual ICollection<Experiment_Attribute> Experiment_Attribute { get; set; }
     }

@@ -15,7 +15,19 @@
                 radioClass: 'iradio_square-red'
             });
 
+            //$('.icheckbox_square-red').change(function () {
+
+            //    debugger;
+            //    if ($(this).val() == 'true')
+            //        $("'#" + $(this).data("itemid") + "'").attr('hidden') = false;
+            //    else
+            //        $("'#" + $(this).data("itemid") + "'").attr('hidden') = true;
+
+            //});
+
+
         });
+
     </script>
 
 }
@@ -39,8 +51,8 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-4">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" }, rows = 5 })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -51,10 +63,24 @@
                 <div class="square">
                     @for (int i = 0; i < Model.ExperItemList.Count; i++)
                     {
-                        <div class="col-md-4">
+                        <div class="col-md-10">
                             @Html.CheckBoxFor(m => m.ExperItemList[i].Checked)
                             @Html.DisplayFor(m => m.ExperItemList[i].Text)
+                            &nbsp;
+                            @if (Model.ExperItemList[i].HasRecordSecond)
+                            {
+                                @*@Html.EditorFor(m => m.ApplySecondList.Where(x => x.ItemId == Model.ExperItemList[i].ItemId).FirstOrDefault().Second,
+                                               new { htmlAttributes = new { @style = "width:20% ; height:20px", min = "0" } })*@
+                                var j = Model.ItemIntervalList.IndexOf(
+                                    Model.ItemIntervalList.Where(x => x.ItemId == Model.ExperItemList[i].ItemId).FirstOrDefault());
+                                    @Html.EditorFor(m => m.ItemIntervalList[j].Interval,
+                                               new { htmlAttributes = new { @style = "width:20% ; height:20px", id = "applySecond[" + i + "]", min = "0" } })
+                                <font>秒</font>
+
+                                @Html.HiddenFor(m => m.ItemIntervalList[j].ItemId)
+                            }
                             @Html.HiddenFor(m => m.ExperItemList[i].ItemId)
+
                         </div>
                     }
                 </div>
@@ -67,10 +93,20 @@
                 <div class="square">
                     @for (int i = 0; i < Model.UpdatePolicyList.Count; i++)
                     {
-                        <div class="col-md-4">
-                            @Html.CheckBoxFor(m => m.UpdatePolicyList[i].Checked)
+                        <div class="col-md-5">
+                            @if (Model.UpdatePolicyList[i].Id == 1)
+                            {
+                                //連接電源
+                                @Html.CheckBoxFor(m => m.UpdatePolicyList[i].Checked, new { disabled = "disabled"})
+                            }
+                            else
+                            {
+                                @Html.CheckBoxFor(m => m.UpdatePolicyList[i].Checked)
+                            }
+
                             @Html.DisplayFor(m => m.UpdatePolicyList[i].Name)
                             @Html.HiddenFor(m => m.UpdatePolicyList[i].Id)
+                            
                         </div>
                     }
                 </div>
