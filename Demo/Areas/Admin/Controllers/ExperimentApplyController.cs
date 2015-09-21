@@ -158,7 +158,7 @@ namespace Demo.Areas.Admin.Controllers
             }
         }
 
-        public JsonResult GetExperimentDetail(int expId)
+        public DetailJson GetExperimentDetail(int expId)
         {
             using (NCCUEntities db = new NCCUEntities())
             {
@@ -172,7 +172,7 @@ namespace Demo.Areas.Admin.Controllers
 
                 var items = from p in db.vwExperimentItem.AsEnumerable()
                             where restoredItem[p.ItemId.ToString()] != null && (bool)restoredItem[p.ItemId.ToString()]
-                            select new
+                            select new ItemsJson
                             {
                                 ItemId = p.ItemId,
                                 ItemName = p.Name,
@@ -191,15 +191,16 @@ namespace Demo.Areas.Admin.Controllers
                                    Name = p.Name
                                };
 
-                var q = Json(new { 
-                    //ExpId = experiment_Apply.id,
-                    ModifyTime = string.Format("{0:yyyy/MM/dd}", experiment_Apply.ModifyTime), 
-                    //Description = experiment_Apply.Description,
-                    Items = items.ToList(),
-                    Policies = policies.ToList() 
-                }, JsonRequestBehavior.AllowGet);
+                //var q = Json(new { 
+                //    //ExpId = experiment_Apply.id,
+                //    ModifyTime = string.Format("{0:yyyy/MM/dd}", experiment_Apply.ModifyTime), 
+                //    //Description = experiment_Apply.Description,
+                //    Items = items.ToList(),
+                //    Policies = policies.ToList() 
+                //}, JsonRequestBehavior.AllowGet);
 
-                return q;
+                //return q;
+                return new DetailJson() { Items = items.ToList(), Policy = policies.ToList()};
             }
         }
     }

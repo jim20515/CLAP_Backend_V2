@@ -11,6 +11,21 @@ using Demo.Areas.Admin.Models;
 
 namespace Demo.Areas.Admin.ViewModels
 {
+    public class DetailJson
+    {
+        public List<UpdatePolicy> Policy { get; set; }
+        public List<ItemsJson> Items { get; set; }
+    }
+
+    public class ItemsJson
+    {
+        public int ItemId;
+        public string ItemName;
+        public int AttrId;
+        public string AttrName;
+        public double? Condition;
+    }
+
     public class ExperimentItem
     {
         public string Text { get; set; }
