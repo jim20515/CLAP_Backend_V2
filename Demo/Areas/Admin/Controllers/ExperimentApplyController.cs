@@ -177,15 +177,14 @@ namespace Demo.Areas.Admin.Controllers
                                 ItemId = p.ItemId,
                                 ItemName = p.Name,
                                 AttrId = p.id,
-                                AttrName = p.AttrName,
-                                Condition = p.Condition
+                                AttrName = p.AttrName
                             };
 
                 JObject restoredPolicy = JsonConvert.DeserializeObject<JObject>(experiment_Apply.UpdatePolicy);
 
                 var policies = from p in GlobalData.UpdatePolicyList.AsEnumerable()
                                where restoredPolicy[p.Id.ToString()] != null & (bool)restoredPolicy[p.Id.ToString()]
-                               select new UpdatePolicy
+                               select new GlobalData.UpdatePolicy
                                {
                                    Id = p.Id,
                                    Name = p.Name
