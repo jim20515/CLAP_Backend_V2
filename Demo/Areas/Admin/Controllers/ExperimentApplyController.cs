@@ -190,6 +190,37 @@ namespace Demo.Areas.Admin.Controllers
                                    Name = p.Name
                                };
 
+                if (experiment_Apply.ItemInterval != null)
+                {
+                    JObject restoredInterval = JsonConvert.DeserializeObject<JObject>(experiment_Apply.ItemInterval);
+
+                    var interval = from p in db.Experiment_Item.AsEnumerable()
+                                   where restoredInterval[p.id.ToString()] != null && (bool)restoredInterval[p.id.ToString()]
+                                   select new ItemInterval
+                                   {
+                                       ItemId = p.id,
+                                       Interval = (int)restoredInterval[p.id.ToString()]
+                                   };
+
+                    return new DetailJson()
+                    {
+                        Items = items.ToList(),
+                        Policy = policies.ToList(),
+                        ItemIntervals = interval.ToList()
+                    };
+                }
+                else
+                {
+                    return new DetailJson()
+                    {
+                        Items = items.ToList(),
+                        Policy = policies.ToList(),
+                        ItemIntervals = null
+                    };
+                }
+
+                
+
                 //var q = Json(new { 
                 //    //ExpId = experiment_Apply.id,
                 //    ModifyTime = string.Format("{0:yyyy/MM/dd}", experiment_Apply.ModifyTime), 
@@ -199,7 +230,12 @@ namespace Demo.Areas.Admin.Controllers
                 //}, JsonRequestBehavior.AllowGet);
 
                 //return q;
-                return new DetailJson() { Items = items.ToList(), Policy = policies.ToList()};
+                //return new DetailJson() 
+                //{ 
+                //    Items = items.ToList(), 
+                //    Policy = policies.ToList(),
+                //    ItemIntervals = interval.ToList()
+                //};
             }
         }
     }

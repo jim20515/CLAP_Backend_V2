@@ -27,11 +27,9 @@ namespace Demo.Areas.Admin.Models
     
         public virtual DbSet<DeviceInfo> DeviceInfo { get; set; }
         public virtual DbSet<Experiment_Apply> Experiment_Apply { get; set; }
-        public virtual DbSet<Experiment_Attribute> Experiment_Attribute { get; set; }
         public virtual DbSet<Experiment_Item> Experiment_Item { get; set; }
         public virtual DbSet<Item_Acc> Item_Acc { get; set; }
         public virtual DbSet<Item_CalAct> Item_CalAct { get; set; }
-        public virtual DbSet<vwExperimentItem> vwExperimentItem { get; set; }
         public virtual DbSet<Item_Browser> Item_Browser { get; set; }
         public virtual DbSet<Item_Call> Item_Call { get; set; }
         public virtual DbSet<Item_Extmedia> Item_Extmedia { get; set; }
@@ -54,5 +52,7 @@ namespace Demo.Areas.Admin.Models
         public virtual DbSet<Item_Bluetooth> Item_Bluetooth { get; set; }
         public virtual DbSet<Item_Traffic> Item_Traffic { get; set; }
         public virtual DbSet<Item_Photo> Item_Photo { get; set; }
+        public virtual DbSet<Experiment_Attribute> Experiment_Attribute { get; set; }
+        public virtual DbSet<vwExperimentItem> vwExperimentItem { get; set; }
     }
 }

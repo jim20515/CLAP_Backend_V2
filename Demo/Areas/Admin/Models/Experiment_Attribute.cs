@@ -17,7 +17,6 @@ namespace Demo.Areas.Admin.Models
         public int id { get; set; }
         public int ItemId { get; set; }
         public string Name { get; set; }
-        public Nullable<double> Condition { get; set; }
         public System.DateTime CreateTime { get; set; }
     
         public virtual Experiment_Item Experiment_Item { get; set; }

@@ -18,6 +18,5 @@ namespace Demo.Areas.Admin.Models
         public string AttrName { get; set; }
         public int id { get; set; }
         public int ItemId { get; set; }
-        public Nullable<double> Condition { get; set; }
     }
 }

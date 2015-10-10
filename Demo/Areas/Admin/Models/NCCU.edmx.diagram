@@ -7,14 +7,11 @@
       <Diagram DiagramId="ff738fdeabf14c26bbb71b4187f6df22" Name="Diagram1" ZoomLevel="114">
         <EntityTypeShape EntityType="NCCUModel.DeviceInfo" Width="1.5" PointX="5" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="NCCUModel.Experiment_Apply" Width="1.5" PointX="7.75" PointY="0.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="NCCUModel.Experiment_Attribute" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="NCCUModel.Experiment_Item" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="NCCUModel.Item_Acc" Width="1.5" PointX="2.125" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="NCCUModel.Item_CalAct" Width="1.5" PointX="7.875" PointY="4.625" IsExpanded="true" />
-        <AssociationConnector Association="NCCUModel.FK_Experiment_Attribute_Experiment_Item" ManuallyRouted="false" />
         <AssociationConnector Association="NCCUModel.FK_Item_Acc_DeviceInfo" />
         <AssociationConnector Association="NCCUModel.FK_Item_CalAct_DeviceInfo" />
-        <EntityTypeShape EntityType="NCCUModel.vwExperimentItem" Width="1.5" PointX="4.375" PointY="7.75" />
         <EntityTypeShape EntityType="NCCUModel.Item_Browser" Width="1.5" PointX="7.25" PointY="47.25" />
         <EntityTypeShape EntityType="NCCUModel.Item_Call" Width="1.5" PointX="7.25" PointY="18.75" />
         <EntityTypeShape EntityType="NCCUModel.Item_Extmedia" Width="1.5" PointX="7.25" PointY="27.25" />
@@ -59,6 +56,9 @@
         <AssociationConnector Association="NCCUModel.FK_Item_Traffic_DeviceInfo" />
         <EntityTypeShape EntityType="NCCUModel.Item_Photo" Width="1.5" PointX="7.25" PointY="71.75" />
         <AssociationConnector Association="NCCUModel.FK_Item_Photo_DeviceInfo" />
+        <EntityTypeShape EntityType="NCCUModel.Experiment_Attribute" Width="1.5" PointX="3.375" PointY="1.25" />
+        <AssociationConnector Association="NCCUModel.FK_Experiment_Attribute_Experiment_Item" />
+        <EntityTypeShape EntityType="NCCUModel.vwExperimentItem" Width="1.5" PointX="0.75" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -15,6 +15,7 @@ namespace Demo.Areas.Admin.ViewModels
     {
         public List<GlobalData.UpdatePolicy> Policy { get; set; }
         public List<ItemsJson> Items { get; set; }
+        public List<ItemInterval> ItemIntervals { get; set; }
     }
 
     public class ItemsJson

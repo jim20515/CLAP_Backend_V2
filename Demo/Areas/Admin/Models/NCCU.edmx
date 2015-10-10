@@ -34,8 +34,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ItemId" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="Condition" Type="float" />
-          <Property Name="CreateTime" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Experiment_Item">
           <Key>
@@ -300,7 +299,6 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
           <Property Name="AttrName" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="ItemId" Type="int" Nullable="false" />
-          <Property Name="Condition" Type="float" />
         </EntityType>
         <Association Name="FK_Experiment_Attribute_Experiment_Item">
           <End Role="Experiment_Item" Type="Self.Experiment_Item" Multiplicity="1" />
@@ -636,8 +634,7 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
     [vwExperimentItem].[Name] AS [Name], 
     [vwExperimentItem].[AttrName] AS [AttrName], 
     [vwExperimentItem].[id] AS [id], 
-    [vwExperimentItem].[ItemId] AS [ItemId], 
-    [vwExperimentItem].[Condition] AS [Condition]
+    [vwExperimentItem].[ItemId] AS [ItemId]
     FROM [dbo].[vwExperimentItem] AS [vwExperimentItem]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_Experiment_Attribute_Experiment_Item" Association="Self.FK_Experiment_Attribute_Experiment_Item">
@@ -791,17 +788,6 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
           <Property Name="ModifyTime" Type="DateTime" Nullable="false" Precision="3" annotation:StoreGeneratedPattern="None" />
           <Property Name="ItemInterval" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Experiment_Attribute">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ItemId" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Condition" Type="Double" />
-          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="Experiment_Item" Relationship="Self.FK_Experiment_Attribute_Experiment_Item" FromRole="Experiment_Attribute" ToRole="Experiment_Item" />
-        </EntityType>
         <EntityType Name="Experiment_Item">
           <Key>
             <PropertyRef Name="id" />
@@ -809,9 +795,9 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="Experiment_Attribute" Relationship="Self.FK_Experiment_Attribute_Experiment_Item" FromRole="Experiment_Item" ToRole="Experiment_Attribute" />
           <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="HasRecordInterval" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Experiment_Attribute" Relationship="NCCUModel.FK_Experiment_Attribute_Experiment_Item" FromRole="Experiment_Item" ToRole="Experiment_Attribute" />
         </EntityType>
         <EntityType Name="Item_Acc">
           <Key>
@@ -835,29 +821,12 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
           <Property Name="devicesId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="DeviceInfo" Relationship="NCCUModel.FK_Item_CalAct_DeviceInfo" FromRole="Item_CalAct" ToRole="DeviceInfo" />
           </EntityType>
-        <Association Name="FK_Experiment_Attribute_Experiment_Item">
-          <End Role="Experiment_Item" Type="Self.Experiment_Item" Multiplicity="1" />
-          <End Role="Experiment_Attribute" Type="Self.Experiment_Attribute" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Experiment_Item">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Experiment_Attribute">
-              <PropertyRef Name="ItemId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="NCCUEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="DeviceInfo" EntityType="Self.DeviceInfo" />
           <EntitySet Name="Experiment_Apply" EntityType="Self.Experiment_Apply" />
-          <EntitySet Name="Experiment_Attribute" EntityType="Self.Experiment_Attribute" />
           <EntitySet Name="Experiment_Item" EntityType="Self.Experiment_Item" />
           <EntitySet Name="Item_Acc" EntityType="Self.Item_Acc" />
           <EntitySet Name="Item_CalAct" EntityType="Self.Item_CalAct" />
-          <AssociationSet Name="FK_Experiment_Attribute_Experiment_Item" Association="Self.FK_Experiment_Attribute_Experiment_Item">
-            <End Role="Experiment_Item" EntitySet="Experiment_Item" />
-            <End Role="Experiment_Attribute" EntitySet="Experiment_Attribute" />
-          </AssociationSet>
           <AssociationSet Name="FK_Item_Acc_DeviceInfo" Association="NCCUModel.FK_Item_Acc_DeviceInfo">
             <End Role="DeviceInfo" EntitySet="DeviceInfo" />
             <End Role="Item_Acc" EntitySet="Item_Acc" />
@@ -866,7 +835,6 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
             <End Role="DeviceInfo" EntitySet="DeviceInfo" />
             <End Role="Item_CalAct" EntitySet="Item_CalAct" />
           </AssociationSet>
-          <EntitySet Name="vwExperimentItem" EntityType="NCCUModel.vwExperimentItem" />
           <EntitySet Name="Item_Browser" EntityType="NCCUModel.Item_Browser" />
           <EntitySet Name="Item_Call" EntityType="NCCUModel.Item_Call" />
           <EntitySet Name="Item_Extmedia" EntityType="NCCUModel.Item_Extmedia" />
@@ -977,6 +945,12 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
             <End Role="DeviceInfo" EntitySet="DeviceInfo" />
             <End Role="Item_Photo" EntitySet="Item_Photo" />
           </AssociationSet>
+          <EntitySet Name="Experiment_Attribute" EntityType="NCCUModel.Experiment_Attribute" />
+          <AssociationSet Name="FK_Experiment_Attribute_Experiment_Item" Association="NCCUModel.FK_Experiment_Attribute_Experiment_Item">
+            <End Role="Experiment_Item" EntitySet="Experiment_Item" />
+            <End Role="Experiment_Attribute" EntitySet="Experiment_Attribute" />
+          </AssociationSet>
+          <EntitySet Name="vwExperimentItem" EntityType="NCCUModel.vwExperimentItem" />
         </EntityContainer>
         <Association Name="FK_Item_Acc_DeviceInfo">
           <End Type="NCCUModel.DeviceInfo" Role="DeviceInfo" Multiplicity="1" />
@@ -1002,19 +976,6 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="vwExperimentItem">
-          <Key>
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="AttrName" />
-            <PropertyRef Name="id" />
-            <PropertyRef Name="ItemId" />
-          </Key>
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="AttrName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="ItemId" Type="Int32" Nullable="false" />
-          <Property Name="Condition" Type="Double" />
-        </EntityType>
         <EntityType Name="Item_Browser">
           <Key>
             <PropertyRef Name="id" />
@@ -1521,6 +1482,40 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Experiment_Attribute">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Experiment_Item" Relationship="NCCUModel.FK_Experiment_Attribute_Experiment_Item" FromRole="Experiment_Attribute" ToRole="Experiment_Item" />
+        </EntityType>
+        <Association Name="FK_Experiment_Attribute_Experiment_Item">
+          <End Type="NCCUModel.Experiment_Item" Role="Experiment_Item" Multiplicity="1" />
+          <End Type="NCCUModel.Experiment_Attribute" Role="Experiment_Attribute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Experiment_Item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Experiment_Attribute">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="vwExperimentItem">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="AttrName" />
+            <PropertyRef Name="id" />
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AttrName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1547,17 +1542,6 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
                 <ScalarProperty Name="TotalItem" ColumnName="TotalItem" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="UpdatePolicy" ColumnName="UpdatePolicy" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Experiment_Attribute">
-            <EntityTypeMapping TypeName="NCCUModel.Experiment_Attribute">
-              <MappingFragment StoreEntitySet="Experiment_Attribute">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Condition" ColumnName="Condition" />
                 <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1592,17 +1576,6 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
                 <ScalarProperty Name="attr" ColumnName="attr" />
                 <ScalarProperty Name="attrval" ColumnName="attrval" />
                 <ScalarProperty Name="datetime" ColumnName="datetime" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vwExperimentItem">
-            <EntityTypeMapping TypeName="NCCUModel.vwExperimentItem">
-              <MappingFragment StoreEntitySet="vwExperimentItem">
-                <ScalarProperty Name="Condition" ColumnName="Condition" />
-                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="AttrName" ColumnName="AttrName" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1845,6 +1818,26 @@ warning 6002: The table/view 'NCCU.dbo.vwExperimentItem' does not have a primary
                 <ScalarProperty Name="attr" ColumnName="attr" />
                 <ScalarProperty Name="devicesId" ColumnName="devicesId" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Experiment_Attribute">
+            <EntityTypeMapping TypeName="NCCUModel.Experiment_Attribute">
+              <MappingFragment StoreEntitySet="Experiment_Attribute">
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwExperimentItem">
+            <EntityTypeMapping TypeName="NCCUModel.vwExperimentItem">
+              <MappingFragment StoreEntitySet="vwExperimentItem">
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="AttrName" ColumnName="AttrName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
