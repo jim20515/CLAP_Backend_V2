@@ -349,6 +349,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Utils\GlobalData.cs" />
     <Compile Include="Utils\GlobalFunc.cs" />
+    <Compile Include="Utils\GzipHelper.cs" />
     <Compile Include="Utils\LogFile.cs" />
   </ItemGroup>
   <ItemGroup>

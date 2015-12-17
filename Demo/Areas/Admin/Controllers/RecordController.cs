@@ -22,6 +22,23 @@ namespace Demo.Areas.Admin.Controllers
     {
         private NCCUEntities db = new NCCUEntities();
 
+        public bool PostTest(string value)
+        { 
+            try
+            {
+                LogFile.SaveTxtFile("Post", value.Substring(0, 10));
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                LogFile.SaveTxtFile(e);
+
+                return false;
+            }
+            
+        
+        }
         // POST: api/Record
         public bool Post(string value)
         {
@@ -38,7 +55,8 @@ namespace Demo.Areas.Admin.Controllers
                     if (ItemTable == null || ItemTable.Count() == 0)
                         continue;
 
-                    string sql = "INSERT INTO [Item." + ItemTable.First().Name + "] (DevicesId,Attr,AttrVal,DateTime) VALUES(@DevicesId,@Attr,@AttrVal,@DateTime)";
+                    string sql = "INSERT INTO [Item." + ItemTable.First().Name + "]";
+                    sql += "(DevicesId,Attr,AttrVal,DateTime) VALUES(@DevicesId,@Attr,@AttrVal,@DateTime)";
 
                     List<SqlParameter> parameterList = new List<SqlParameter>();
                     parameterList.Add(new SqlParameter("@DevicesId", record.DeviceId));

@@ -11,12 +11,15 @@ namespace Demo.Areas.Admin.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Item_CalAct
     {
         public int id { get; set; }
         public string attr { get; set; }
         public string attrval { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss}")]
         public System.DateTime datetime { get; set; }
         public int devicesId { get; set; }
     
